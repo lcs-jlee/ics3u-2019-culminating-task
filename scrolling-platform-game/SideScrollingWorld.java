@@ -74,14 +74,14 @@ public class SideScrollingWorld extends World
     private void addLeftGround()
     {
         // How many tiles will cover the bottom of the initial visible area of screen?
-        final int tilesToCreate = 10;
+        final int tilesToCreate = 5;
         
         // Loop to create and add the tile objects
         for (int i = 0; i < tilesToCreate; i += 1)
         {
             // Add ground objects at bottom of screen
             // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
-            int x = i * TILE_SIZE + TILE_SIZE / 2;
+            int x = i * TILE_SIZE * 2 + TILE_SIZE;
             int y = getHeight() - TILE_SIZE / 2;
 
             // Create a ground tile
@@ -192,8 +192,8 @@ public class SideScrollingWorld extends World
     private void addRightGround()
     {
         // Constants to control dimensions of the ground at end of world
-        final int COUNT_OF_GROUND = 5;
-        final int GROUND_BELOW_COLUMNS = COUNT_OF_GROUND;
+        final int COUNT_OF_GROUND = 3;
+        final int GROUND_BELOW_COLUMNS = COUNT_OF_GROUND * 2 ;
         final int GROUND_BELOW_ROWS = 6;
         final int COUNT_OF_GROUND_BELOW = GROUND_BELOW_COLUMNS * GROUND_BELOW_ROWS;
 
@@ -201,7 +201,7 @@ public class SideScrollingWorld extends World
         for (int i = 0; i < COUNT_OF_GROUND; i += 1)
         {
             // Position in wider scrollable world
-            int x = SCROLLABLE_WIDTH - TILE_SIZE / 2 - i * TILE_SIZE;
+            int x = SCROLLABLE_WIDTH - TILE_SIZE - i * TILE_SIZE * 2;
             int y = VISIBLE_HEIGHT / 2 + TILE_SIZE;
 
             // Create object and add it
