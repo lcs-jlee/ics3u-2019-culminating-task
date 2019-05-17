@@ -122,11 +122,12 @@ public class Hero extends Actor
         {
             moveRight();
         }
-        else if (Greenfoot.isKeyDown("w") && !isGameOver)
+        else if (Greenfoot.isKeyDown("W") && !isGameOver)
         {
             if(isTouching(Ladder.class))
             {
-                moveUp();
+                setLocation(getX(), getY()-deltaY);
+
             }
         }
         else
@@ -190,6 +191,11 @@ public class Hero extends Actor
                 setLocation(getX(), correctedYPosition);
             }
         }
+        else if (isTouching(Ladder.class))
+        {
+            setLocation(getX(), getY());
+            
+        }
         else
         {
             fall();
@@ -207,7 +213,7 @@ public class Hero extends Actor
         Actor rearUnder = getOneObjectAtOffset(0 - getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
 
         // If there is no solid object below (or slightly in front of or behind) the hero...
-        if (directlyUnder == null && frontUnder == null && rearUnder == null && isTouching(Ladder.class)==false)
+        if (directlyUnder == null && frontUnder == null && rearUnder == null)
         {
             return false;   // Not on a solid object
         }

@@ -201,7 +201,7 @@ public class SideScrollingWorld extends World
     {
         // How many tiles will cover the bottom of the initial visible area of screen?
         final int tilesToCreate = getWidth() / TILE_SIZE;
-
+        final int laddersToCreate = getHeight() / TILE_SIZE;
         // Loop to create and add the tile objects
         for (int i = 0; i < tilesToCreate; i += 1)
         {
@@ -217,8 +217,13 @@ public class SideScrollingWorld extends World
             addObject(groundTile, x, y);
         }
         
-        Ladder newLadder = new Ladder(40, 400);
-        addObject(newLadder,50, 400);
+        for (int i = 0; i < laddersToCreate; i++)
+        {
+            int x = 50;
+            int y = getHeight() - HALF_TILE_SIZE * i - TILE_SIZE;
+            Ladder ladder = new Ladder(x,y);
+            addObject(ladder, x, y);
+        }
     }
 
     /**
