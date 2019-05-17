@@ -18,11 +18,11 @@ public class SideScrollingWorld extends World
     private static final int HALF_TILE_SIZE = TILE_SIZE/2;
     // World size constants
     private static final int VISIBLE_WIDTH = 640;
-    private static final int VISIBLE_HEIGHT = 200;
+    private static final int VISIBLE_HEIGHT = 480;
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
-    private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
+    public static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 4;
-    private static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT *2;
+    public static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT * 3;
 
     // Hero
     Hero theHero;
@@ -216,6 +216,9 @@ public class SideScrollingWorld extends World
             // Add the objects
             addObject(groundTile, x, y);
         }
+        
+        Ladder newLadder = new Ladder(40, 400);
+        addObject(newLadder,50, 400);
     }
 
     /**
