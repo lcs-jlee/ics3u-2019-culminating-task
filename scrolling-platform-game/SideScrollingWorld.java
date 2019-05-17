@@ -22,7 +22,7 @@ public class SideScrollingWorld extends World
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     public static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 4;
-    public static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT * 3;
+    public static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT * 2;
 
     // Hero
     Hero theHero;

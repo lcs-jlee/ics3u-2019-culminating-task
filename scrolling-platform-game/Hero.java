@@ -122,13 +122,9 @@ public class Hero extends Actor
         {
             moveRight();
         }
-        else if (Greenfoot.isKeyDown("W") && !isGameOver)
+        else if (Greenfoot.isKeyDown("up") && !isGameOver)
         {
-            if(isTouching(Ladder.class))
-            {
-                setLocation(getX(), getY()-deltaY);
-
-            }
+            setLocation(getX(),getY()-deltaY);
         }
         else
         {
@@ -152,7 +148,7 @@ public class Hero extends Actor
      */
     public void checkFall()
     {
-        if (onPlatform())
+        if (onPlatform() || isTouching(Ladder.class))
         {
             // Stop falling
             deltaY = 0;
@@ -191,11 +187,7 @@ public class Hero extends Actor
                 setLocation(getX(), correctedYPosition);
             }
         }
-        else if (isTouching(Ladder.class))
-        {
-            setLocation(getX(), getY());
-            
-        }
+        
         else
         {
             fall();
@@ -217,6 +209,7 @@ public class Hero extends Actor
         {
             return false;   // Not on a solid object
         }
+        
         else 
         {
             return true;
