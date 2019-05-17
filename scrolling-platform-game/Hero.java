@@ -148,7 +148,7 @@ public class Hero extends Actor
      */
     public void checkFall()
     {
-        if (onPlatform() || isTouching(Ladder.class))
+        if (onPlatform())
         {
             // Stop falling
             deltaY = 0;

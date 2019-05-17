@@ -55,143 +55,17 @@ public class SideScrollingWorld extends World
         
         addLeftGround();
         addFences();
-        addMetalPlateSteps();
+        
         addClouds();
         addRightGround();
+        for (int i = 0; i <=3; i ++)
+        {
+            addSteps(i);
+        }
         
        
         addHero();
-        /**
-        // ground
-        for (int i = 0; i <= 10; i +=1)
-        {
-            int x =  HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 14*TILE_SIZE + HALF_TILE_SIZE;
-            Ground ground = new Ground(x,y);
-            addObject(ground, x, y);
-        }
-        for (int i = 0; i <= 4; i +=1)
-        {
-            int x =  55*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 11*TILE_SIZE + HALF_TILE_SIZE;
-            Ground ground = new Ground(x,y);
-            addObject(ground, x, y);
-        }
-        for (int i = 0; i <= 4; i +=1)
-        {
-            int x =  55*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 12*TILE_SIZE + HALF_TILE_SIZE;
-            Ground ground = new Ground(x,y);
-            addObject(ground, x, y);
-        }
-        for (int i = 0; i <= 4; i +=1)
-        {
-            int x =  55*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 13*TILE_SIZE + HALF_TILE_SIZE;
-            Ground ground = new Ground(x,y);
-            addObject(ground, x, y);
-        }
-        for (int i = 0; i <= 4; i +=1)
-        {
-            int x =  55*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 14*TILE_SIZE + HALF_TILE_SIZE;
-            Ground ground = new Ground(x,y);
-            addObject(ground, x, y);
-        }
-        //fence
-        for (int i = 0; i <= 3; i +=1)
-        {
-            int x = 2*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 13*TILE_SIZE + HALF_TILE_SIZE;
-            Fence fence = new Fence(x,y);
-            addObject(fence, x, y);
-        }
-        //Metal Plate
-        for (int i = 0; i <= 2; i +=1)
-        {
-            int x =  12*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 13*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 1; i +=1)
-        {
-            int x =  16*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 12*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 0; i +=1)
-        {
-            int x =  19*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 11*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 2; i +=1)
-        {
-            int x =  21*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 10*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 7; i +=1)
-        {
-            int x =  25*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 9*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 3; i +=1)
-        {
-            int x =  27*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 8*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 0; i +=1)
-        {
-            int x =  34*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 10*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 3; i +=1)
-        {
-            int x =  34*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 14*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 3; i +=1)
-        {
-            int x =  36*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 9*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 2; i +=1)
-        {
-            int x =  42*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 8*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 2; i +=1)
-        {
-            int x =  47*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 7*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        for (int i = 0; i <= 0; i +=1)
-        {
-            int x =  51*TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 5*TILE_SIZE + HALF_TILE_SIZE;
-            MetalPlate metalPlate = new MetalPlate(x,y);
-            addObject(metalPlate, x, y);
-        }
-        **/
+        
     }
 
     /**
@@ -200,8 +74,8 @@ public class SideScrollingWorld extends World
     private void addLeftGround()
     {
         // How many tiles will cover the bottom of the initial visible area of screen?
-        final int tilesToCreate = getWidth() / TILE_SIZE;
-        final int laddersToCreate = getHeight() / TILE_SIZE;
+        final int tilesToCreate = 10;
+        
         // Loop to create and add the tile objects
         for (int i = 0; i < tilesToCreate; i += 1)
         {
@@ -217,13 +91,7 @@ public class SideScrollingWorld extends World
             addObject(groundTile, x, y);
         }
         
-        for (int i = 0; i < laddersToCreate; i++)
-        {
-            int x = 50;
-            int y = getHeight() - HALF_TILE_SIZE * i - TILE_SIZE;
-            Ladder ladder = new Ladder(x,y);
-            addObject(ladder, x, y);
-        }
+        
     }
 
     /**
@@ -262,26 +130,23 @@ public class SideScrollingWorld extends World
     /**
      * Add steps made out of metal plates leading to end of world.
      */
-    private void addMetalPlateSteps()
+    private void addSteps(int howFar)
     {
-        // How many plates total?
-        final int COUNT_OF_METAL_PLATES = 40;
-        final int PLATES_PER_GROUP = 4;
+        
 
         // Add groups of plates
-        for (int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 1)
+        for (int j = 1; j <=4; j++)
         {
-            // Group of four metal plates all at same y position
-            int y = VISIBLE_HEIGHT - TILE_SIZE / 2 * 3 - i * TILE_SIZE;
-
-            // Add the individual plates in a given group
-            for (int j = 0; j < PLATES_PER_GROUP; j += 1)
+            
+            for (int i = 1; i <= 3; i +=1)
             {
-                int x = VISIBLE_WIDTH + TILE_SIZE * 2 + TILE_SIZE * (i + j) + TILE_SIZE * 5 * i;
-                MetalPlate plate = new MetalPlate(x, y);
+                int x =  HALF_TILE_SIZE + i * TILE_SIZE + 5 *TILE_SIZE + 4 * j * TILE_SIZE + 16* howFar *TILE_SIZE;
+                int y = VISIBLE_HEIGHT - HALF_TILE_SIZE - 3 * TILE_SIZE - j * TILE_SIZE;
+                MetalPlate plate = new MetalPlate(x,y);
                 addObject(plate, x, y);
             }
         }
+        
     }
 
     /**
@@ -327,7 +192,7 @@ public class SideScrollingWorld extends World
     private void addRightGround()
     {
         // Constants to control dimensions of the ground at end of world
-        final int COUNT_OF_GROUND = 8;
+        final int COUNT_OF_GROUND = 5;
         final int GROUND_BELOW_COLUMNS = COUNT_OF_GROUND;
         final int GROUND_BELOW_ROWS = 6;
         final int COUNT_OF_GROUND_BELOW = GROUND_BELOW_COLUMNS * GROUND_BELOW_ROWS;
