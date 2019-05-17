@@ -18,11 +18,11 @@ public class SideScrollingWorld extends World
     private static final int HALF_TILE_SIZE = TILE_SIZE/2;
     // World size constants
     private static final int VISIBLE_WIDTH = 640;
-    private static final int VISIBLE_HEIGHT = 480;
+    private static final int VISIBLE_HEIGHT = 200;
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
-    public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
-    private static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT;
+    public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 4;
+    private static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT *2;
 
     // Hero
     Hero theHero;
@@ -52,15 +52,16 @@ public class SideScrollingWorld extends World
      */
     private void setup()
     {
-        /**
+        
         addLeftGround();
         addFences();
         addMetalPlateSteps();
         addClouds();
         addRightGround();
         
-        **/
+       
         addHero();
+        /**
         // ground
         for (int i = 0; i <= 10; i +=1)
         {
@@ -190,6 +191,7 @@ public class SideScrollingWorld extends World
             MetalPlate metalPlate = new MetalPlate(x,y);
             addObject(metalPlate, x, y);
         }
+        **/
     }
 
     /**
@@ -255,7 +257,7 @@ public class SideScrollingWorld extends World
     private void addMetalPlateSteps()
     {
         // How many plates total?
-        final int COUNT_OF_METAL_PLATES = 20;
+        final int COUNT_OF_METAL_PLATES = 40;
         final int PLATES_PER_GROUP = 4;
 
         // Add groups of plates
@@ -303,9 +305,9 @@ public class SideScrollingWorld extends World
     {
         // Initial horizontal position
         int initialX = getWidth() - 5 * getWidth() / 6;
-
+        int initialY = getHeight() / 4 * 3;
         // Instantiate the hero object
-        theHero = new Hero(initialX);
+        theHero = new Hero(initialX, initialY);
 
         // Add hero in bottom left corner of screen
         addObject(theHero, initialX, getHeight() / 4 * 3);
