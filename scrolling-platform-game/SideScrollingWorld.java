@@ -18,7 +18,7 @@ public class SideScrollingWorld extends World
     private static final int HALF_TILE_SIZE = TILE_SIZE/2;
     // World size constants
     private static final int VISIBLE_WIDTH = 640;
-    private static final int VISIBLE_HEIGHT = 480;
+    private static final int VISIBLE_HEIGHT = 448;
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     public static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 4;
@@ -56,7 +56,7 @@ public class SideScrollingWorld extends World
         addLeftGround();
         addFences();
         
-        addClouds();
+        addStardestroyers();
         addRightGround();
         for (int i = 0; i <=3; i ++)
         {
@@ -152,14 +152,14 @@ public class SideScrollingWorld extends World
     /**
      * Add a few clouds for the opening scene.
      */
-    private void addClouds()
+    private void addStardestroyers()
     {
-        Cloud cloud1 = new Cloud(170, 125);
-        addObject(cloud1, 170, 125);
-        Cloud cloud2 = new Cloud(450, 175);
-        addObject(cloud2, 450, 175);
-        Cloud cloud3 = new Cloud(775, 50);
-        addObject(cloud3, 775, 50);
+        Stardestroyer st1 = new Stardestroyer(170, 125);
+        addObject(st1, 170, 125);
+        Stardestroyer st2 = new Stardestroyer(450, 175);
+        addObject(st2, 450, 175);
+        Stardestroyer st3 = new Stardestroyer(775, 50);
+        addObject(st3, 775, 50);
     }
 
     /**

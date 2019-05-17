@@ -133,7 +133,7 @@ public class Hero extends Actor
         }
 
         // Jumping
-        if (Greenfoot.isKeyDown("space") && !isGameOver)
+        if (Greenfoot.isKeyDown("up") && !isGameOver)
         {
             // Only able to jump when on a solid object
             if (onPlatform())
