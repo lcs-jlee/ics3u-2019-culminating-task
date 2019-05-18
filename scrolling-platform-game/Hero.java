@@ -181,13 +181,14 @@ public class Hero extends Actor
                     setImage("megaman-gun-right.png");
                     Bullet newBullet = new Bullet(checkFacingRight());
                     getWorld().addObject(newBullet, getX()+16, getY()-3);
-                    
+                    Greenfoot.playSound("Sample 5.wav");
                 }
                 else
                 {
                     setImage("megaman-gun-left.png");
                     Bullet newBullet = new Bullet(checkFacingRight());
                     getWorld().addObject(newBullet, getX()-16, getY()-3);
+                    Greenfoot.playSound("Sample 5.wav");
                 }  
             }
            }
