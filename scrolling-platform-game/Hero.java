@@ -50,6 +50,8 @@ public class Hero extends Actor
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
     
+    private boolean ifStop;
+    
 
     /**
      * Constructor
@@ -65,7 +67,7 @@ public class Hero extends Actor
 
         // Game on
         isGameOver = false;
-
+        ifStop = true;
         // First jump will be in 'down' direction
         verticalDirection = JUMPING_DOWN;
 
@@ -99,9 +101,11 @@ public class Hero extends Actor
      */
     public void act() 
     {
+        
         checkFall();
         checkKeys();
         checkFall();
+        
         if (!isGameOver)
         {
             checkGameOver();
@@ -113,28 +117,31 @@ public class Hero extends Actor
      */
     private void checkKeys()
     {
+        //shoot
+        
         // Walking keys
         if (Greenfoot.isKeyDown("left") && !isGameOver)
         {
+            
             moveLeft();
+            horizontalDirection = FACING_LEFT;
         }
         else if (Greenfoot.isKeyDown("right") && !isGameOver)
         {
+            
             moveRight();
-        }
-        else if (Greenfoot.isKeyDown("up") && !isGameOver)
-        {
-            setLocation(getX(),getY()-deltaY);
-        }
-        else
+            horizontalDirection = FACING_RIGHT;
+        }     
+        
+        else 
         {
             // Standing still; reset walking animation
             walkingFrames = 0;
+            checkIfShoot();
         }
-        //shoot
         if (Greenfoot.isKeyDown("space") && !isGameOver)
         {
-            shoot();
+            checkIfShoot();
         }
         // Jumping
         if (Greenfoot.isKeyDown("up") && !isGameOver)
@@ -146,10 +153,27 @@ public class Hero extends Actor
             }
         }
     }
-
+    
     /**
      * Should the hero be falling right now?
      */
+    public void checkIfShoot()
+    {
+        
+          
+        if (horizontalDirection == FACING_RIGHT)
+            {
+                setImage("megaman-gun-right.png");
+                Bullet newBullet = new Bullet();
+                getWorld().addObject(newBullet, getX()+16, getY()-3);
+                
+            }
+            else
+            {
+                setImage("megaman-gun-left.png");
+            } 
+        
+    }
     public void checkFall()
     {
         if (onPlatform())
@@ -161,10 +185,12 @@ public class Hero extends Actor
             if (horizontalDirection == FACING_RIGHT && Greenfoot.isKeyDown("right") == false)
             {
                 setImage("megaman-right.png");
+                
             }
             else if (horizontalDirection == FACING_LEFT && Greenfoot.isKeyDown("left") == false)
             {
                 setImage("megaman-left.png");
+                
             }
 
             // Get a reference to any object that's created from a subclass of Platform,
@@ -546,18 +572,7 @@ public class Hero extends Actor
         }
         
     }
-    public void shoot()
-    {
-        if (horizontalDirection == FACING_RIGHT)
-        {
-            setImage("megaman-gun-right.png");
-        }
-        else
-        {
-            setImage("megaman-gun-left.png");
-        }
-        
-    }
+    
 
     /**
      * When the hero falls off the bottom of the screen,
