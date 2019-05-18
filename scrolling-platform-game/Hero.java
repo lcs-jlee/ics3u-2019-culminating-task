@@ -104,7 +104,7 @@ public class Hero extends Actor
         
         checkFall();
         checkKeys();
-        checkFall();
+        //checkFall();
         
         if (!isGameOver)
         {
@@ -139,10 +139,7 @@ public class Hero extends Actor
             walkingFrames = 0;
             checkIfShoot();
         }
-        if (Greenfoot.isKeyDown("space") && !isGameOver)
-        {
-            checkIfShoot();
-        }
+        
         // Jumping
         if (Greenfoot.isKeyDown("up") && !isGameOver)
         {
@@ -159,9 +156,9 @@ public class Hero extends Actor
      */
     public void checkIfShoot()
     {
-        
-          
-        if (horizontalDirection == FACING_RIGHT)
+        if (Greenfoot.isKeyDown("space") && !isGameOver)
+        {
+           if (horizontalDirection == FACING_RIGHT)
             {
                 setImage("megaman-gun-right.png");
                 Bullet newBullet = new Bullet();
@@ -171,7 +168,10 @@ public class Hero extends Actor
             else
             {
                 setImage("megaman-gun-left.png");
-            } 
+            }  
+        }
+          
+        
         
     }
     public void checkFall()
