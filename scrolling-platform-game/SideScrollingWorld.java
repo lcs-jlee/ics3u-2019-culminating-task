@@ -160,6 +160,8 @@ public class SideScrollingWorld extends World
         addObject(st2, 450, 175);
         Stardestroyer st3 = new Stardestroyer(775, 50);
         addObject(st3, 775, 50);
+        Stardestroyer st4 = new Stardestroyer(300, 230);
+        addObject(st4, 300, 230);
     }
 
     /**

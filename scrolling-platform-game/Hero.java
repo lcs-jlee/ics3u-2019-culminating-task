@@ -131,7 +131,11 @@ public class Hero extends Actor
             // Standing still; reset walking animation
             walkingFrames = 0;
         }
-
+        //shoot
+        if (Greenfoot.isKeyDown("space") && !isGameOver)
+        {
+            shoot();
+        }
         // Jumping
         if (Greenfoot.isKeyDown("up") && !isGameOver)
         {
@@ -214,6 +218,7 @@ public class Hero extends Actor
         {
             return true;
         }
+        
     }
 
     /**
@@ -412,7 +417,7 @@ public class Hero extends Actor
             }
 
         }   
-
+        horizontalDirection = FACING_RIGHT;
     }
 
     /**
@@ -515,7 +520,7 @@ public class Hero extends Actor
             }
 
         } 
-
+        horizontalDirection = FACING_LEFT;
     }
     public void moveUp()
     {
@@ -541,7 +546,18 @@ public class Hero extends Actor
         }
         
     }
-    
+    public void shoot()
+    {
+        if (horizontalDirection == FACING_RIGHT)
+        {
+            setImage("megaman-gun-right.png");
+        }
+        else
+        {
+            setImage("megaman-gun-left.png");
+        }
+        
+    }
 
     /**
      * When the hero falls off the bottom of the screen,
