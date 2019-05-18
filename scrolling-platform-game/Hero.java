@@ -39,8 +39,8 @@ public class Hero extends Actor
     private String verticalDirection;
 
     // Constants to track horizontal direction
-    private static final String FACING_RIGHT = "right";
-    private static final String FACING_LEFT = "left";
+    public static final String FACING_RIGHT = "right";
+    public static final String FACING_LEFT = "left";
     private String horizontalDirection;
 
     // For walking animation
@@ -154,20 +154,33 @@ public class Hero extends Actor
     /**
      * Should the hero be falling right now?
      */
+    public boolean checkFacingRight()
+    {
+        if (horizontalDirection == FACING_RIGHT)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public void checkIfShoot()
     {
         if (Greenfoot.isKeyDown("space") && !isGameOver)
         {
-           if (horizontalDirection == FACING_RIGHT)
+           if (checkFacingRight())
             {
                 setImage("megaman-gun-right.png");
-                Bullet newBullet = new Bullet();
+                Bullet newBullet = new Bullet(checkFacingRight());
                 getWorld().addObject(newBullet, getX()+16, getY()-3);
                 
             }
             else
             {
                 setImage("megaman-gun-left.png");
+                Bullet newBullet = new Bullet(checkFacingRight());
+                getWorld().addObject(newBullet, getX()-16, getY()-3);
             }  
         }
           

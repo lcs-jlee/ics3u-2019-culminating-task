@@ -14,12 +14,24 @@ public class Bullet extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     boolean isRemoved = false;
+    boolean direction;
+    //constructor
+    Bullet (boolean direction1)
+    {
+          direction = direction1;
+    }
+    //act
     public void act() 
     {
         // Add your action code here.
-        move(10);
-        
-        
+        if (direction == true)
+        {
+            move(10);
+        }
+        else
+        {
+            move(-10);
+        }
         if (isRemoved == false)
         {
             checkIfAtEdge();
