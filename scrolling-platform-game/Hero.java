@@ -52,6 +52,7 @@ public class Hero extends Actor
     
     private boolean ifStop;
     
+    private int frames;
 
     /**
      * Constructor
@@ -111,6 +112,7 @@ public class Hero extends Actor
         {
             checkGameOver();
         }
+        frames++;
     }
 
     /**
@@ -168,23 +170,27 @@ public class Hero extends Actor
     }
     public void checkIfShoot()
     {
-        if (Greenfoot.isKeyDown("space") && !isGameOver)
+        if (frames % 10 == 0)
         {
-           if (checkFacingRight())
+        
+        
+            if ( Greenfoot.isKeyDown("space") && !isGameOver)
             {
-                setImage("megaman-gun-right.png");
-                Bullet newBullet = new Bullet(checkFacingRight());
-                getWorld().addObject(newBullet, getX()+16, getY()-3);
-                
+               if (checkFacingRight())
+                {
+                    setImage("megaman-gun-right.png");
+                    Bullet newBullet = new Bullet(checkFacingRight());
+                    getWorld().addObject(newBullet, getX()+16, getY()-3);
+                    
+                }
+                else
+                {
+                    setImage("megaman-gun-left.png");
+                    Bullet newBullet = new Bullet(checkFacingRight());
+                    getWorld().addObject(newBullet, getX()-16, getY()-3);
+                }  
             }
-            else
-            {
-                setImage("megaman-gun-left.png");
-                Bullet newBullet = new Bullet(checkFacingRight());
-                getWorld().addObject(newBullet, getX()-16, getY()-3);
-            }  
-        }
-          
+           }
         
         
     }
