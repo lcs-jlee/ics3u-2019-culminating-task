@@ -45,6 +45,7 @@ public class SideScrollingWorld extends World
 
         // Game on
         isGameOver = false;
+        
     }
 
     /**
