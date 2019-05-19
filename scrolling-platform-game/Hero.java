@@ -24,7 +24,7 @@ public class Hero extends Actor
     private int acceleration = 1;
 
     // Strength of a jump
-    private int jumpStrength = -20;
+    private int jumpStrength = -18;
 
     // Track current theoretical position in wider "scrollable" world
     private int currentScrollableWorldXPosition;
@@ -569,30 +569,7 @@ public class Hero extends Actor
         } 
         //horizontalDirection = FACING_LEFT;
     }
-    public void moveUp()
-    {
-        SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
-
-        // Decide whether to actually move, or make world's tiles move
-        if (currentScrollableWorldYPosition - deltaY < world.HALF_VISIBLE_HEIGHT)
-        {
-            // HERO IS WITHIN EXTREME LEFT PORTION OF SCROLLABLE WORLD
-            // So... actually move the actor within the visible world.
-
-            // Don't let hero go off left edge of scrollable world 
-            // (Allow movement only when not at left edge)
-            if (currentScrollableWorldYPosition > 0)
-            {
-                // Move left in visible world
-                int newVisibleWorldYPosition = getY() - deltaY;
-                setLocation(getX(), newVisibleWorldYPosition);
-
-                // Track position in wider scrolling world
-                currentScrollableWorldYPosition = getY();
-            }            
-        }
-        
-    }
+    
     
 
     /**

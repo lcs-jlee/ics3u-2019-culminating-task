@@ -36,9 +36,13 @@ public class Bullet extends Actor
         {
             checkIfAtEdge();
         }
+        if (isRemoved == false)
+        {
+            checkForRemoval();
+        }
     } 
      private void checkIfAtEdge()
-    {
+     {
         if (isAtEdge())
         {
             SideScrollingWorld world = (SideScrollingWorld) getWorld();
@@ -49,4 +53,16 @@ public class Bullet extends Actor
         }
     
     }
+    private void checkForRemoval()
+    {
+        if (isTouching(Enemy.class))
+        {
+            SideScrollingWorld world = (SideScrollingWorld) getWorld();
+            this.isRemoved = true;
+            getWorld().removeObject(this);
+        }
+        
+    }
+    
+    
 }

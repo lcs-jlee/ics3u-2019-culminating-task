@@ -68,6 +68,7 @@ public class SideScrollingWorld extends World
         addHero();
         
     }
+    
 
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
