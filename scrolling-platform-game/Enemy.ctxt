@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=void\ checkRemoval()
 comment4.params=
 comment4.target=void\ checkHit()
-numComments=5
+comment5.params=speed
+comment5.target=void\ moveRight(int)
+numComments=6

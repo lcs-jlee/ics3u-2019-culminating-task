@@ -67,4 +67,13 @@ public class Enemy extends Actor
              checkRemoval();
         }
     }
+    public void moveRight(int speed)
+    {
+        setLocation(getX() + speed, getY());
+    }
+    public void moveLeft(int speed)
+    {
+        setLocation(getX() - speed, getY());
+    }
+    
 }

@@ -429,11 +429,18 @@ public class Hero extends Actor
 
             // Track position in wider scrolling world
             currentScrollableWorldXPosition += deltaX;
-
+            
+            //Get a list of all enemies
+            List<Enemy> enemies = world.getObjects(Enemy.class);
+            for (Enemy enemy : enemies)
+            {
+                enemy.moveLeft(deltaX);
+            }
+            
             // Get a list of all platforms (objects that need to move
             // to make hero look like they are moving)
             List<Platform> platforms = world.getObjects(Platform.class);
-
+            
             // Move all the platform objects to make it look like hero is moving
             for (Platform platform : platforms)
             {
@@ -533,7 +540,14 @@ public class Hero extends Actor
 
             // Track position in wider scrolling world
             currentScrollableWorldXPosition -= deltaX;
-
+            
+            //List enemies
+            List<Enemy> enemies = world.getObjects(Enemy.class);
+            
+            for (Enemy enemy : enemies)
+            {
+                enemy.moveRight(deltaX);
+            }
             // Get a list of all platforms (objects that need to move
             // to make hero look like they are moving)
             List<Platform> platforms = world.getObjects(Platform.class);
