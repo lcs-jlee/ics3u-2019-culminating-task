@@ -75,7 +75,19 @@ public class SideScrollingWorld extends World
      */
     private void addEnemy()
     {
-        addObject(new Enemy(350), 350, 280);
+        
+        for (int i = 0; i <= 3; i ++)
+        {
+            int x = 400 + 16 * i * 32;
+            int y = 260;
+            addObject(new Enemy(), x, y);
+        }
+        for (int i = 0; i <= 3; i ++)
+        {
+            int x = 656 + 16 * i * 32;
+            int y = 196;
+            addObject(new Enemy(), x, y);
+        }
     
     }
     /**

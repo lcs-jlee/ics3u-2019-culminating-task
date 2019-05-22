@@ -17,22 +17,33 @@ public class Enemy extends Actor
     private int frames = 0;
     private int startingXPosition;
     private boolean directRight;
-    public Enemy(int x)
+    public Enemy()
     {
-        //track starting position 
-        startingXPosition = x;
         directRight = true;
     }
     public void act() 
     {
         
         movement();
-        
+        shoot();
         checkHit();
         checkRemoval();
         frames++;
     }
+    private void shoot()
+    {
+       if (frames % 20 == 0 || frames == 0)
+       {
+           for(int i = 0; i <=6; i++)
+           {
+               EnemyBullet newBullet = new EnemyBullet(0 + 30 * i);
+               getWorld().addObject(newBullet, getX(), getY());     
+           }
+       }
+       
+       
     
+    }
     private void movement()
     {
         if (directRight == true )

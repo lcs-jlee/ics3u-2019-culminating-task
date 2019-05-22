@@ -105,8 +105,9 @@ public class Hero extends Actor
         
         checkFall();
         checkKeys();
+        
         checkIfShoot();
-        checkFall();
+        
         
         if (!isGameOver)
         {
