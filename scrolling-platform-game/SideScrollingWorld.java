@@ -23,13 +23,13 @@ public class SideScrollingWorld extends World
     public static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 4;
     public static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT * 2;
-
+    
     // Hero
     Hero theHero;
 
     // Track whether game is on
     private boolean isGameOver;
-
+    private int frames;
     /**
      * Constructor for objects of class SideScrollingWorld.
      */
@@ -45,6 +45,7 @@ public class SideScrollingWorld extends World
 
         // Game on
         isGameOver = false;
+        frames = 0;
         
     }
 
@@ -173,6 +174,11 @@ public class SideScrollingWorld extends World
      */
     public void act()
     {
+        if (frames % 9360 == 0 || frames == 0)
+        {
+            Greenfoot.playSound("a.mp3");
+        }
+        frames++;
     }
 
     /**

@@ -20,13 +20,13 @@ public class Enemy extends Actor
         
         if (frames % 10 == 0)
         {
-            movement();
+            //movement();
         }
         
         checkHit();
         frames++;
     } 
-    private void movement()
+    private void randomMovement()
     {
         int selection = Greenfoot.getRandomNumber(4);
         if (selection == 0)

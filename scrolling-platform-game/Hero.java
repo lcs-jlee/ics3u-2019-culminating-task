@@ -377,9 +377,7 @@ public class Hero extends Actor
     {
         // Track direction
         horizontalDirection = FACING_RIGHT;
-        
-        
-
+       
         // Set image 
         if (onPlatform())
         {
