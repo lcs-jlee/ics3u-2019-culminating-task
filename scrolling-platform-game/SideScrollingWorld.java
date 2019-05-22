@@ -206,7 +206,7 @@ public class SideScrollingWorld extends World
         {
             // Position in wider scrollable world
             int x = SCROLLABLE_WIDTH - TILE_SIZE - i * TILE_SIZE * 2;
-            int y = VISIBLE_HEIGHT / 2 + TILE_SIZE;
+            int y = VISIBLE_HEIGHT / 2 + TILE_SIZE ;
 
             // Create object and add it
             Ground ground = new Ground(x, y);

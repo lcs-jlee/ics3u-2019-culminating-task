@@ -11,4 +11,6 @@ comment4.params=
 comment4.target=void\ checkHit()
 comment5.params=speed
 comment5.target=void\ moveRight(int)
-numComments=6
+comment6.params=speed
+comment6.target=void\ moveLeft(int)
+numComments=7

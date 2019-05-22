@@ -180,14 +180,14 @@ public class Hero extends Actor
                 {
                     setImage("megaman-gun-right.png");
                     Bullet newBullet = new Bullet(checkFacingRight());
-                    getWorld().addObject(newBullet, getX()+16, getY()-1);
+                    getWorld().addObject(newBullet, getX()+32, getY()-3);
                     Greenfoot.playSound("Sample 5.wav");
                 }
                 else
                 {
                     setImage("megaman-gun-left.png");
                     Bullet newBullet = new Bullet(checkFacingRight());
-                    getWorld().addObject(newBullet, getX()-16, getY()-1);
+                    getWorld().addObject(newBullet, getX()-32, getY()-3);
                     Greenfoot.playSound("Sample 5.wav");
                 }  
             }
@@ -304,14 +304,29 @@ public class Hero extends Actor
             verticalDirection = JUMPING_DOWN;
 
             // Set image
-            if (horizontalDirection == FACING_RIGHT)
+            if (Greenfoot.isKeyDown("space"))
             {
-                setImage("megaman-jump-down-right.png");
+                if (horizontalDirection == FACING_RIGHT)
+                {
+                    setImage("megaman-gun-right.png");
+                }
+                else
+                {
+                    setImage("megaman-gun-left.png");
+                }
             }
             else
             {
-                setImage("megaman-jump-down-left.png");
+                if (horizontalDirection == FACING_RIGHT)
+                {
+                    setImage("megaman-jump-down-right.png");
+                }
+                else
+                {
+                    setImage("megaman-jump-down-left.png");
+                }
             }
+            
             
         }
 
@@ -362,6 +377,8 @@ public class Hero extends Actor
     {
         // Track direction
         horizontalDirection = FACING_RIGHT;
+        
+        
 
         // Set image 
         if (onPlatform())
