@@ -13,47 +13,51 @@ public class Enemy extends Actor
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int life = 5;
+    private int life = 1;
     private int frames = 0;
+    private int startingXPosition;
+    private boolean directRight;
+    public Enemy(int x)
+    {
+        //track starting position 
+        startingXPosition = x;
+        directRight = true;
+    }
     public void act() 
     {
         
-        if (frames % 10 == 0)
-        {
-            //movement();
-        }
+        movement();
         
         checkHit();
+        checkRemoval();
         frames++;
-    } 
-    private void randomMovement()
+    }
+    
+    private void movement()
     {
-        int selection = Greenfoot.getRandomNumber(4);
-        if (selection == 0)
+        if (directRight == true )
         {
-            setLocation(getX()+10,getY()+5);
-        }
-        else if (selection ==1)
-        {
-            setLocation(getX()+10,getY()-5);
-        }
-        else if (selection ==2)
-        {
-            setLocation(getX()-10,getY()-5);
-        }
-        else if (selection == 3)
-        {
-            setLocation(getX()-10, getY()+5);
+            move(2);
+            if (frames % 24 == 0)
+            {
+                directRight = false;
+            }
         }
         else 
         {
-            setLocation(getX(), getY());
+            move(-2);
+            if (frames % 24 == 0)
+            {
+                directRight = true;
+            }
+        
         }
+        
     }
     private void checkRemoval()
     {
         
-        if (life < 0)
+        if (life <= 0)
         {
             getWorld().removeObject(this);
         }
@@ -64,7 +68,7 @@ public class Enemy extends Actor
         if (isTouching(Bullet.class))
         {
              life --;
-             checkRemoval();
+             
         }
     }
     public void moveRight(int speed)

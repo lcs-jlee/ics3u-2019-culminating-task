@@ -67,10 +67,17 @@ public class SideScrollingWorld extends World
         
        
         addHero();
+        addEnemy();
         
     }
+    /**
+     * Add enemies to the world
+     */
+    private void addEnemy()
+    {
+        addObject(new Enemy(350), 350, 280);
     
-
+    }
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */

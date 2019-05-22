@@ -53,7 +53,7 @@ public class Bullet extends Actor
         }
     
     }
-    private void checkForRemoval()
+    public void checkForRemoval()
     {
         if (isTouching(Enemy.class))
         {
