@@ -1,3 +1,4 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
@@ -53,6 +54,9 @@ public class Hero extends Actor
     private boolean ifStop;
     
     private int frames;
+    
+    //life
+    private int life = 5;
 
     /**
      * Constructor
@@ -102,10 +106,13 @@ public class Hero extends Actor
      */
     public void act() 
     {
+        //show life of hero
+        SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
+        world.showText(life +"", 20,20);
         
         checkFall();
         checkKeys();
-        
+        checkHit();
         checkIfShoot();
         
         
@@ -115,7 +122,17 @@ public class Hero extends Actor
         }
         frames++;
     }
-
+    /**
+     * Check if he got shot
+     */
+    private void checkHit()
+    {
+        if (isTouching(EnemyBullet.class))
+        {
+            life --;
+        }
+    }
+    
     /**
      * Respond to keyboard action from the user.
      */
@@ -158,6 +175,7 @@ public class Hero extends Actor
     /**
      * Should the hero be falling right now?
      */
+    
     public boolean checkFacingRight()
     {
         if (horizontalDirection == FACING_RIGHT)
@@ -619,6 +637,16 @@ public class Hero extends Actor
         {
             // Remove the hero
             isGameOver = true;
+            world.setGameOver();
+            world.removeObject(this);
+
+            // Tell the user game is over
+            world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
+        }
+        if (life <= 0)
+        {
+            isGameOver = true;
+            //remove the hero
             world.setGameOver();
             world.removeObject(this);
 

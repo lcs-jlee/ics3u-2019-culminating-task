@@ -32,7 +32,7 @@ public class Enemy extends Actor
     }
     private void shoot()
     {
-       if (frames % 20 == 0 || frames == 0)
+       if (frames % 60 == 0 || frames == 0)
        {
            for(int i = 0; i <=6; i++)
            {
