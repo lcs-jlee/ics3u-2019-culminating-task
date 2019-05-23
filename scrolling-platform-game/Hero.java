@@ -51,11 +51,16 @@ public class Hero extends Actor
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
     
+    //check if megaman stopped
     private boolean ifStop;
     
+    //check if megaman is crouching
+    private boolean ifCrouch;
+    
+    //keep tracking the time 60*frames = one second
     private int frames;
     
-    //life
+    //Megaman's life
     private int life = 5;
 
     /**
@@ -73,6 +78,7 @@ public class Hero extends Actor
         // Game on
         isGameOver = false;
         ifStop = true;
+        ifCrouch = false;
         // First jump will be in 'down' direction
         verticalDirection = JUMPING_DOWN;
 
@@ -111,8 +117,15 @@ public class Hero extends Actor
         world.showText(life +"", 20,20);
         
         checkFall();
-        checkKeys();
-        //checkHit();
+        
+        if (ifCrouch == false)
+        {
+            checkKeys();
+        }
+        
+        
+        
+        checkCrouch();
         checkIfShoot();
         
         
@@ -132,7 +145,24 @@ public class Hero extends Actor
             life --;
         }
     }
-    
+    /**
+     * Check if he crouched
+     */
+    private void checkCrouch()
+    {
+        if (Greenfoot.isKeyDown("down"))
+        {
+            
+            setImage("megaman-crouch.png");
+           
+            
+            ifCrouch = true;
+        }
+        if (!Greenfoot.isKeyDown("down"))
+        {
+            ifCrouch = false;
+        }
+    }
     /**
      * Respond to keyboard action from the user.
      */
