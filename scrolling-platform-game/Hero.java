@@ -51,6 +51,8 @@ public class Hero extends Actor
     private static final int COUNT_OF_WALKING_IMAGES = 2;
     private int walkingFrames;
     
+    //crouching image
+    private GreenfootImage crouching = new GreenfootImage("megaman-crouching.png");
     //check if megaman stopped
     private boolean ifStop;
     
@@ -61,7 +63,7 @@ public class Hero extends Actor
     private int frames;
     
     //Megaman's life
-    private int life = 5;
+    private int life = 10;
 
     /**
      * Constructor
@@ -152,10 +154,15 @@ public class Hero extends Actor
     {
         if (Greenfoot.isKeyDown("down"))
         {
-            
-            setImage("megaman-crouch.png");
-           
-            
+            if (horizontalDirection == FACING_RIGHT)
+            {
+                setImage("megaman-crouching.png");
+            }
+            else
+            {
+             crouching.mirrorHorizontally();
+            }
+ 
             ifCrouch = true;
         }
         if (!Greenfoot.isKeyDown("down"))
