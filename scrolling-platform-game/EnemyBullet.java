@@ -24,7 +24,7 @@ public class EnemyBullet extends Actor
     public void act() 
     {
         // Add your action code here.
-        move(-10);
+        move(-8);
         if (isRemoved == false)
         {
             checkIfAtEdge();
