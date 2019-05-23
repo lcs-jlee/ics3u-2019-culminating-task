@@ -57,9 +57,13 @@ public class Bullet extends Actor
     {
         if (isTouching(Enemy.class))
         {
+            // Get the enemy we are touching
+            Enemy theEnemy = (Enemy) getOneIntersectingObject(Enemy.class);
+            theEnemy.decreaseLives();
+            
             SideScrollingWorld world = (SideScrollingWorld) getWorld();
             this.isRemoved = true;
-            getWorld().removeObject(this);
+            world.removeObject(this);
         }
         
     }

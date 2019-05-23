@@ -112,7 +112,7 @@ public class Hero extends Actor
         
         checkFall();
         checkKeys();
-        checkHit();
+        //checkHit();
         checkIfShoot();
         
         
@@ -654,4 +654,14 @@ public class Hero extends Actor
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
     }
+    
+    /**
+     * Decrease lives
+     */
+    public void decreaseLives()
+    {
+        life--;
+    }
+    
+    
 }

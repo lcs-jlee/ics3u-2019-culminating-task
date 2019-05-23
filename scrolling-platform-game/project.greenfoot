@@ -191,5 +191,5 @@ target9.y=0
 version=3.0.0
 width=1440
 world.lastInstantiated=SideScrollingWorld
-xPosition=-11
+xPosition=0
 yPosition=23

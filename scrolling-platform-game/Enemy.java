@@ -13,7 +13,7 @@ public class Enemy extends Actor
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int life = 1;
+    private int life = 3;
     private int frames = 0;
     private int startingXPosition;
     private boolean directRight;
@@ -21,29 +21,31 @@ public class Enemy extends Actor
     {
         directRight = true;
     }
+
     public void act() 
     {
-        
+
         movement();
         shoot();
         checkHit();
         checkRemoval();
         frames++;
     }
+
     private void shoot()
     {
-       if (frames % 60 == 0 || frames == 0)
-       {
-           for(int i = 0; i <=6; i++)
-           {
-               EnemyBullet newBullet = new EnemyBullet(0 + 30 * i);
-               getWorld().addObject(newBullet, getX(), getY());     
-           }
-       }
-       
-       
+        if (frames % 60 == 0 || frames == 0)
+        {
+            for(int i = 0; i <=6; i++)
+            {
+                EnemyBullet newBullet = new EnemyBullet(0 + 30 * i);
+                getWorld().addObject(newBullet, getX(), getY());     
+            }
+        }
+
     
     }
+
     private void movement()
     {
         if (directRight == true )
@@ -61,34 +63,45 @@ public class Enemy extends Actor
             {
                 directRight = true;
             }
-        
+
         }
-        
+
     }
+
     private void checkRemoval()
     {
-        
+
         if (life <= 0)
         {
             getWorld().removeObject(this);
         }
-        
+
     }
+
     private void checkHit()
     {
         if (isTouching(Bullet.class))
         {
-             life --;
-             
+            life --;
         }
     }
+
     public void moveRight(int speed)
     {
         setLocation(getX() + speed, getY());
     }
+
     public void moveLeft(int speed)
     {
         setLocation(getX() - speed, getY());
     }
-    
+
+    /**
+     * Decrease lives
+     */
+    public void decreaseLives()
+    {
+        life--;
+        System.out.println("My lives left are now: " + life);
+    }
 }

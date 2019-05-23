@@ -51,8 +51,9 @@ public class EnemyBullet extends Actor
         if (isTouching(Hero.class))
         {
             SideScrollingWorld world = (SideScrollingWorld) getWorld();
+            world.getHero().decreaseLives();
             this.isRemoved = true;
-            getWorld().removeObject(this);
+            world.removeObject(this);
         }
         
     }
