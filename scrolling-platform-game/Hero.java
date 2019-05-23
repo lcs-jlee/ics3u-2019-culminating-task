@@ -151,24 +151,26 @@ public class Hero extends Actor
      * Check if he crouched
      */
     private void checkCrouch()
-    {
-        if (Greenfoot.isKeyDown("down"))
-        {
-            if (horizontalDirection == FACING_RIGHT)
+    {   
+      
+            if (Greenfoot.isKeyDown("down"))
             {
-                setImage("megaman-crouching.png");
-            }
-            else
-            {
-             crouching.mirrorHorizontally();
-            }
- 
-            ifCrouch = true;
-        }
-        if (!Greenfoot.isKeyDown("down"))
-        {
+                if (checkFacingRight())
+                {
+                    setImage("megaman-crouching.png");
+                }
+                else if (!checkFacingRight())
+                {
+                    crouching.mirrorHorizontally();
+                }
+                ifCrouch = true;
+           }
+           if (!Greenfoot.isKeyDown("down"))
+           {
             ifCrouch = false;
-        }
+           }
+        
+        
     }
     /**
      * Respond to keyboard action from the user.
@@ -259,12 +261,12 @@ public class Hero extends Actor
             deltaY = 0;
             
             // Set image
-            if (horizontalDirection == FACING_RIGHT && Greenfoot.isKeyDown("right") == false && Greenfoot.isKeyDown("space") == false)
+            if (horizontalDirection == FACING_RIGHT && Greenfoot.isKeyDown("right") == false && Greenfoot.isKeyDown("space") == false && Greenfoot.isKeyDown("down") == false)
             {
                 setImage("megaman-right.png");
                 
             }
-            else if (horizontalDirection == FACING_LEFT && Greenfoot.isKeyDown("left") == false && Greenfoot.isKeyDown("space") ==false)
+            else if (horizontalDirection == FACING_LEFT && Greenfoot.isKeyDown("left") == false && Greenfoot.isKeyDown("space") ==false && Greenfoot.isKeyDown("down") == false)
             {
                 setImage("megaman-left.png");
                 
