@@ -63,7 +63,7 @@ public class Hero extends Actor
     private int frames;
     
     //Megaman's life
-    private int life = 10;
+    private int life = 50;
 
     /**
      * Constructor
@@ -116,26 +116,31 @@ public class Hero extends Actor
     {
         //show life of hero
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
-        world.showText(life +"", 20,20);
+        world.showText(life +"", 20,20);        
         
         checkFall();
-        
         if (ifCrouch == false)
         {
             checkKeys();
         }
-        
-        
-        
+        checkHeart();
         checkCrouch();
         checkIfShoot();
-        
-        
         if (!isGameOver)
         {
             checkGameOver();
         }
         frames++;
+    }
+    /**
+     * Check if he got Heart
+     */
+    private void checkHeart()
+    {
+        if (isTouching(Heart.class))
+        {
+            life = life + 4;
+        }
     }
     /**
      * Check if he got shot
@@ -161,7 +166,7 @@ public class Hero extends Actor
                 }
                 else if (!checkFacingRight())
                 {
-                    crouching.mirrorHorizontally();
+                    setImage("megaman-crouching-left.png");
                 }
                 ifCrouch = true;
            }
@@ -542,6 +547,13 @@ public class Hero extends Actor
                 // FarAwayItems move left to make hero appear to move right
                 farAwayItem.moveLeft(deltaX / 4);
             }
+            //get list of all Items
+            List<Item> items = world.getObjects(Item.class);
+            //move all the Item objects to make it look like hero is moving
+            for (Item item : items)
+            {
+                item.moveLeft(deltaX / 4);
+            }
 
         }   
         //horizontalDirection = FACING_RIGHT;
@@ -651,6 +663,14 @@ public class Hero extends Actor
             {
                 // FarAwayItems move right to make hero appear to move left
                 farAwayItem.moveRight(deltaX / 4);
+            }
+            
+            //get list of all Items
+            List<Item> items = world.getObjects(Item.class);
+            //move all the Item objects to make it look like hero is moving
+            for (Item item : items)
+            {
+                item.moveRight(deltaX / 4);
             }
 
         } 

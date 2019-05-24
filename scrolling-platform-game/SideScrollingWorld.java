@@ -70,6 +70,25 @@ public class SideScrollingWorld extends World
         addEnemy();
         
     }
+    private void addItems()
+    {
+        int selection = Greenfoot.getRandomNumber(2);
+        if (selection == 0)
+        {
+            int x = 400 + 16 * (selection + 2) *32;
+            addObject(new Heart(), x, 200);
+        }
+        else if (selection == 1)
+        {
+            int x = 400 + 16 * (selection + 2) *32;
+            addObject(new Heart(), x, 200);
+        }
+        else
+        {
+            int x = 400 + 16 * (selection +2) *32;
+            addObject(new Heart(), x, 200);
+        }
+    }
     /**
      * Add enemies to the world
      */

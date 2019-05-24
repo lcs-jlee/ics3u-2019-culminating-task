@@ -102,6 +102,6 @@ public class Enemy extends Actor
     public void decreaseLives()
     {
         life--;
-        System.out.println("My lives left are now: " + life);
+        
     }
 }
