@@ -28,6 +28,7 @@ public class Hero extends Actor
     private int changeY = world.VISIBLE_HEIGHT;
     //private int changeY = world.VISIBLE_HEIGHT - world.TILE_SIZE *2;
     
+    private int moveUpTimes = 1;
     // Acceleration for falls
     private int acceleration = 1;
 
@@ -40,7 +41,9 @@ public class Hero extends Actor
     private int currentScrollableWorldYPosition;
     // Track whether game is over or not
     private boolean isGameOver;
-
+    
+    //check if megaman touched the portal
+    private boolean checkTouchingPortal = false;
     // Constants to track vertical direction
     private static final String JUMPING_UP = "up";
     private static final String JUMPING_DOWN = "down";
@@ -133,7 +136,27 @@ public class Hero extends Actor
         checkHeart();
         checkCrouch();
         checkIfShoot();
-        moveUp();
+        checkMoveUp();
+        if (checkTouchingPortal == true && frames % 20 == 0 && moveUpTimes <=5)
+        {
+                moveUp();   
+                if (moveUpTimes == 5)
+                {
+                    checkTouchingPortal = false;
+                    
+                }
+        }
+        if (checkTouchingPortal == true)
+        {
+            if (frames % 2 == 0)
+            {
+                setImage("Empty.png");
+            }
+            else 
+            {
+                setImage("Item.png");
+            }
+        }
         if (!isGameOver)
         {
             checkGameOver();
@@ -268,7 +291,7 @@ public class Hero extends Actor
     }
     public void checkFall()
     {
-        if (onPlatform())
+        if (onPlatform() || checkTouchingPortal == true)
         {
             // Stop falling
             deltaY = 0;
@@ -684,57 +707,64 @@ public class Hero extends Actor
         } 
         //horizontalDirection = FACING_LEFT;
     }
-    
+    private void checkMoveUp()
+    {
+        if (getY() == 49 && isTouching(Portal.class))
+        {
+            checkTouchingPortal = true;
+            removeTouching(Portal.class);
+        }
+        
+    }
     private void moveUp()
     {
         SideScrollingWorld world = (SideScrollingWorld) getWorld();
-        if (getY() == 49 && isTouching(Portal.class))
-        {
-            
-            // Track position in wider scrolling world
-            currentScrollableWorldYPosition -= changeY;
-            
-            //List enemies
-            List<Enemy> enemies = world.getObjects(Enemy.class);
-            
-            for (Enemy enemy : enemies)
-            {
-                enemy.moveDown(changeY);
-            }
-            // Get a list of all platforms (objects that need to move
-            // to make hero look like they are moving)
-            List<Platform> platforms = world.getObjects(Platform.class);
     
-            // Move all the platform objects at same speed as hero
-            for (Platform platform : platforms)
-            {
-                // Platforms move right to make hero appear to move left
-                platform.moveDown(changeY);
-            }
-    
-            // Get a list of all decorations (objects that need to move
-            // to make hero look like they are moving)
-            List<Decoration> decorations = world.getObjects(Decoration.class);
-    
-            // Move all the decoration objects to make it look like hero is moving
-            for (Decoration decoration: decorations)
-            {
-                // Platforms move right to make hero appear to move left
-                decoration.moveDown(changeY);
-            }
-    
-            
-            
-            //get list of all Items
-            List<Item> items = world.getObjects(Item.class);
-            //move all the Item objects to make it look like hero is moving
-            for (Item item : items)
-            {
-                item.moveDown(changeY/240);
-            }
-    
-        } 
         
+        // Track position in wider scrolling world
+        currentScrollableWorldYPosition -= changeY/4;
+        
+        //List enemies
+        List<Enemy> enemies = world.getObjects(Enemy.class);
+        
+        for (Enemy enemy : enemies)
+        {
+            enemy.moveDown(changeY/4);
+        }
+        // Get a list of all platforms (objects that need to move
+        // to make hero look like they are moving)
+        List<Platform> platforms = world.getObjects(Platform.class);
+
+        // Move all the platform objects at same speed as hero
+        for (Platform platform : platforms)
+        {
+            // Platforms move right to make hero appear to move left
+            platform.moveDown(changeY/4);
+        }
+
+        // Get a list of all decorations (objects that need to move
+        // to make hero look like they are moving)
+        List<Decoration> decorations = world.getObjects(Decoration.class);
+
+        // Move all the decoration objects to make it look like hero is moving
+        for (Decoration decoration: decorations)
+        {
+            // Platforms move right to make hero appear to move left
+            decoration.moveDown(changeY/4);
+        }
+
+        
+        
+        //get list of all Items
+        List<Item> items = world.getObjects(Item.class);
+        //move all the Item objects to make it look like hero is moving
+        for (Item item : items)
+        {
+            item.moveDown(changeY/4);
+        }
+
+        
+        moveUpTimes++;
         
     }
     
