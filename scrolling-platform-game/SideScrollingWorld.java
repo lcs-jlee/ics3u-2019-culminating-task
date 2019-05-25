@@ -254,14 +254,13 @@
         final int GROUND_BELOW_COLUMNS = COUNT_OF_GROUND * 2 ;
         final int GROUND_BELOW_ROWS = 6;
         final int COUNT_OF_GROUND_BELOW = GROUND_BELOW_COLUMNS * GROUND_BELOW_ROWS;
-        // Make steps
-        for (int i = 1; i <= 2; i++)
-        {
-            int x = SCROLLABLE_WIDTH - TILE_SIZE * 3;
-            int y = VISIBLE_HEIGHT/2 - TILE_SIZE * 3 * i;
-            MetalPlate metalPlate = new MetalPlate(x, y);
-            addObject(metalPlate, x, y);
-        }
+        
+        // Make portal
+        int X = SCROLLABLE_WIDTH - TILE_SIZE * 3;
+        int Y = TILE_SIZE + TILE_SIZE ;
+        Portal portal = new Portal(X, Y);
+        addObject(portal, X, Y);
+        
         // 1. Make ground at end of level (top layer)
         for (int i = 0; i < COUNT_OF_GROUND; i += 1)
         {

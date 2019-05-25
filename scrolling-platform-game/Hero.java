@@ -126,6 +126,7 @@ public class Hero extends Actor
         checkHeart();
         checkCrouch();
         checkIfShoot();
+        moveUp();
         if (!isGameOver)
         {
             checkGameOver();
@@ -676,7 +677,15 @@ public class Hero extends Actor
         } 
         //horizontalDirection = FACING_LEFT;
     }
-    
+    private void moveUp()
+    {
+        SideScrollingWorld world = (SideScrollingWorld) getWorld();
+        if (getY() ==49 && isTouching(Portal.class))
+        {
+            System.out.println(getY());
+        }
+        
+    }
     
 
     /**
