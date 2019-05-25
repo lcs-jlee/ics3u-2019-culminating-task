@@ -25,7 +25,9 @@ public class Hero extends Actor
     private int deltaY = 4;
     
     //Vertical change
-    private int changeY = world.VISIBLE_HEIGHT - world.TILE_SIZE *2;
+    private int changeY = world.VISIBLE_HEIGHT;
+    //private int changeY = world.VISIBLE_HEIGHT - world.TILE_SIZE *2;
+    
     // Acceleration for falls
     private int acceleration = 1;
 
@@ -682,13 +684,7 @@ public class Hero extends Actor
         } 
         //horizontalDirection = FACING_LEFT;
     }
-    private void checkMoveUp()
-    {
-        if (getY() == 49 && isTouching(Portal.class))
-        {
-        
-        }
-    }
+    
     private void moveUp()
     {
         SideScrollingWorld world = (SideScrollingWorld) getWorld();
@@ -703,7 +699,7 @@ public class Hero extends Actor
             
             for (Enemy enemy : enemies)
             {
-                enemy.moveDown(changeY/4);
+                enemy.moveDown(changeY);
             }
             // Get a list of all platforms (objects that need to move
             // to make hero look like they are moving)
@@ -713,7 +709,7 @@ public class Hero extends Actor
             for (Platform platform : platforms)
             {
                 // Platforms move right to make hero appear to move left
-                platform.moveDown(changeY/4);
+                platform.moveDown(changeY);
             }
     
             // Get a list of all decorations (objects that need to move
@@ -724,7 +720,7 @@ public class Hero extends Actor
             for (Decoration decoration: decorations)
             {
                 // Platforms move right to make hero appear to move left
-                decoration.moveDown(changeY/4);
+                decoration.moveDown(changeY);
             }
     
             
@@ -734,7 +730,7 @@ public class Hero extends Actor
             //move all the Item objects to make it look like hero is moving
             for (Item item : items)
             {
-                item.moveDown(changeY/4);
+                item.moveDown(changeY/240);
             }
     
         } 

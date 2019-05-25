@@ -65,7 +65,7 @@
                 addSteps(i);
             }
             
-            
+            addUpGround(SCROLLABLE_WIDTH/TILE_SIZE*2);
             addHero();
             addEnemy();
             
@@ -176,7 +176,19 @@
         Fence fence5 = new Fence(x, y);
         addObject(fence5, x, y);
     }
-
+    /**
+     * add Ground for upper part of Scrollable world
+     */
+    private void addUpGround(int howMany)
+    {
+        for (int i = 0; i <= howMany; i++)
+        {
+            int x = i * TILE_SIZE * 2 + TILE_SIZE;
+            int y = -HALF_TILE_SIZE ; 
+            Ground ground = new Ground(x,y);
+            addObject(ground, x, y);
+        }
+    }
     /**
      * Add steps made out of metal plates leading to end of world.
      */
@@ -226,6 +238,7 @@
             Greenfoot.playSound("a.mp3");
         }
         addItems();
+        
         frames++;
     }
 
