@@ -14,11 +14,11 @@
          * These are available for use in any method below.
          */    
         // Tile size in pixels for world elements (blocks, clouds, etc)
-        private static final int TILE_SIZE = 32;
-        private static final int HALF_TILE_SIZE = TILE_SIZE/2;
+        public static final int TILE_SIZE = 32;
+        public static final int HALF_TILE_SIZE = TILE_SIZE/2;
         // World size constants
-        private static final int VISIBLE_WIDTH = 640;
-        private static final int VISIBLE_HEIGHT = 448;
+        public static final int VISIBLE_WIDTH = 640;
+        public static final int VISIBLE_HEIGHT = 448;
         public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
         public static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
         public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 4;

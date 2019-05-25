@@ -15,12 +15,17 @@ public class Hero extends Actor
      * 
      * These are available for use in any method below.
      */    
+    //referece from the world
+    SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
+    
     // Horizontal speed (change in horizontal position, or delta X)
     private int deltaX = 4;
 
     // Vertical speed (change in vertical position, or delta Y)
     private int deltaY = 4;
-
+    
+    //Vertical change
+    private int changeY = world.VISIBLE_HEIGHT - world.TILE_SIZE *2;
     // Acceleration for falls
     private int acceleration = 1;
 
@@ -677,17 +682,67 @@ public class Hero extends Actor
         } 
         //horizontalDirection = FACING_LEFT;
     }
+    private void checkMoveUp()
+    {
+        if (getY() == 49 && isTouching(Portal.class))
+        {
+        
+        }
+    }
     private void moveUp()
     {
         SideScrollingWorld world = (SideScrollingWorld) getWorld();
-        if (getY() ==49 && isTouching(Portal.class))
+        if (getY() == 49 && isTouching(Portal.class))
         {
-            System.out.println(getY());
-        }
+            
+            // Track position in wider scrolling world
+            currentScrollableWorldYPosition -= changeY;
+            
+            //List enemies
+            List<Enemy> enemies = world.getObjects(Enemy.class);
+            
+            for (Enemy enemy : enemies)
+            {
+                enemy.moveDown(changeY/4);
+            }
+            // Get a list of all platforms (objects that need to move
+            // to make hero look like they are moving)
+            List<Platform> platforms = world.getObjects(Platform.class);
+    
+            // Move all the platform objects at same speed as hero
+            for (Platform platform : platforms)
+            {
+                // Platforms move right to make hero appear to move left
+                platform.moveDown(changeY/4);
+            }
+    
+            // Get a list of all decorations (objects that need to move
+            // to make hero look like they are moving)
+            List<Decoration> decorations = world.getObjects(Decoration.class);
+    
+            // Move all the decoration objects to make it look like hero is moving
+            for (Decoration decoration: decorations)
+            {
+                // Platforms move right to make hero appear to move left
+                decoration.moveDown(changeY/4);
+            }
+    
+            
+            
+            //get list of all Items
+            List<Item> items = world.getObjects(Item.class);
+            //move all the Item objects to make it look like hero is moving
+            for (Item item : items)
+            {
+                item.moveDown(changeY/4);
+            }
+    
+        } 
+        
         
     }
     
-
+    
     /**
      * When the hero falls off the bottom of the screen,
      * game is over. We must remove them.
@@ -696,10 +751,10 @@ public class Hero extends Actor
     {
         // Get object reference to world
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
-
+    
         // Vertical position where hero no longer visible
         int offScreenVerticalPosition = (world.getHeight() + this.getImage().getHeight() / 2);
-
+    
         // Off bottom of screen?
         if (this.getY() > offScreenVerticalPosition)
         {
@@ -707,7 +762,7 @@ public class Hero extends Actor
             isGameOver = true;
             world.setGameOver();
             world.removeObject(this);
-
+    
             // Tell the user game is over
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
@@ -717,7 +772,7 @@ public class Hero extends Actor
             //remove the hero
             world.setGameOver();
             world.removeObject(this);
-
+    
             // Tell the user game is over
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
@@ -733,3 +788,4 @@ public class Hero extends Actor
     
     
 }
+
