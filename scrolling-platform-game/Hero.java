@@ -63,7 +63,7 @@ public class Hero extends Actor
     private int frames;
     
     //Megaman's life
-    private int life = 25;
+    private int life = 250;
 
     /**
      * Constructor
