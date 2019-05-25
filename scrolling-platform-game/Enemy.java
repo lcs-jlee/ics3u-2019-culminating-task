@@ -95,6 +95,16 @@ public class Enemy extends Actor
     {
         setLocation(getX() - speed, getY());
     }
+    
+    public void moveUp(int speed)
+    {
+        setLocation(getX(), getY()-speed);
+    }
+    
+    public void moveDown(int speed)
+    {
+        setLocation(getX(), getY()+speed);
+    }
 
     /**
      * Decrease lives

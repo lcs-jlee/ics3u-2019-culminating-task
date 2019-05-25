@@ -1,93 +1,102 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Template for a side-scrolling platform game.
- * 
- * @author R. Gordon
- * @version May 8, 2019
- */
-public class SideScrollingWorld extends World
-{
-    /**
-     * Instance variables
-     * 
-     * These are available for use in any method below.
-     */    
-    // Tile size in pixels for world elements (blocks, clouds, etc)
-    private static final int TILE_SIZE = 32;
-    private static final int HALF_TILE_SIZE = TILE_SIZE/2;
-    // World size constants
-    private static final int VISIBLE_WIDTH = 640;
-    private static final int VISIBLE_HEIGHT = 448;
-    public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
-    public static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
-    public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 4;
-    public static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT * 2;
+    import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
     
-    // Hero
-    Hero theHero;
-
-    // Track whether game is on
-    private boolean isGameOver;
-    private int frames;
     /**
-     * Constructor for objects of class SideScrollingWorld.
+     * Template for a side-scrolling platform game.
+     * 
+     * @author R. Gordon
+     * @version May 8, 2019
      */
-    public SideScrollingWorld()
-    {    
-        // Create a new world with 640x480 cells with a cell size of 1x1 pixels.
-        // Final argument of 'false' means that actors in the world are not restricted to the world boundary.
-        // See: https://www.greenfoot.org/files/javadoc/greenfoot/World.html#World-int-int-int-boolean-
-        super(VISIBLE_WIDTH, VISIBLE_HEIGHT, 1, false);
-
-        // Set up the starting scene
-        setup();
-
-        // Game on
-        isGameOver = false;
-        frames = 0;
-        
-    }
-
-    /**
-     * Set up the entire world.
-     */
-    private void setup()
+    public class SideScrollingWorld extends World
     {
+        /**
+         * Instance variables
+         * 
+         * These are available for use in any method below.
+         */    
+        // Tile size in pixels for world elements (blocks, clouds, etc)
+        private static final int TILE_SIZE = 32;
+        private static final int HALF_TILE_SIZE = TILE_SIZE/2;
+        // World size constants
+        private static final int VISIBLE_WIDTH = 640;
+        private static final int VISIBLE_HEIGHT = 448;
+        public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
+        public static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
+        public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 4;
+        public static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT * 2;
         
-        addLeftGround();
-        addFences();
-        
-        addStardestroyers();
-        addRightGround();
-        for (int i = 0; i <=3; i ++)
+        // Hero
+        Hero theHero;
+    
+        // Track whether game is on
+        private boolean isGameOver;
+        private int frames;
+        /**
+         * Constructor for objects of class SideScrollingWorld.
+         */
+        public SideScrollingWorld()
+        {    
+            // Create a new world with 640x480 cells with a cell size of 1x1 pixels.
+            // Final argument of 'false' means that actors in the world are not restricted to the world boundary.
+            // See: https://www.greenfoot.org/files/javadoc/greenfoot/World.html#World-int-int-int-boolean-
+            super(VISIBLE_WIDTH, VISIBLE_HEIGHT, 1, false);
+    
+            // Set up the starting scene
+            setup();
+            
+            // Game on
+            isGameOver = false;
+            frames = 0;
+            
+        }
+    
+        /**
+         * Set up the entire world.
+         */
+        private void setup()
         {
-            addSteps(i);
+            
+            addLeftGround();
+            addFences();
+            
+            addStardestroyers();
+            addRightGround();
+            for (int i = 0; i <=3; i ++)
+            {
+                addSteps(i);
+            }
+            
+            
+            addHero();
+            addEnemy();
+            
+        }
+        private void addItems()
+        {
+            
+        if (frames % 1800 == 0 || frames == 0)
+        {
+            int selection = Greenfoot.getRandomNumber(2);
+            
+            if (selection == 0)
+            {
+                int x = 400 + 16 * (selection + 2) *16;
+                
+                addObject(new Heart(), x, 200);
+            }
+            else if (selection == 1)
+            {
+                int x = 400 + 16 * (selection + 2) *16;
+                
+                addObject(new Heart(), x, 200);
+            }
+            else
+            {
+                int x = 400 + 16 * (selection +2) *16;
+                
+                addObject(new Heart(), x, 200);
+            }
         }
         
-       
-        addHero();
-        addEnemy();
-        
-    }
-    private void addItems()
-    {
-        int selection = Greenfoot.getRandomNumber(2);
-        if (selection == 0)
-        {
-            int x = 400 + 16 * (selection + 2) *32;
-            addObject(new Heart(), x, 200);
-        }
-        else if (selection == 1)
-        {
-            int x = 400 + 16 * (selection + 2) *32;
-            addObject(new Heart(), x, 200);
-        }
-        else
-        {
-            int x = 400 + 16 * (selection +2) *32;
-            addObject(new Heart(), x, 200);
-        }
     }
     /**
      * Add enemies to the world
@@ -216,6 +225,7 @@ public class SideScrollingWorld extends World
         {
             Greenfoot.playSound("a.mp3");
         }
+        addItems();
         frames++;
     }
 

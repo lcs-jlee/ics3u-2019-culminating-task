@@ -63,7 +63,7 @@ public class Hero extends Actor
     private int frames;
     
     //Megaman's life
-    private int life = 50;
+    private int life = 25;
 
     /**
      * Constructor
@@ -552,7 +552,7 @@ public class Hero extends Actor
             //move all the Item objects to make it look like hero is moving
             for (Item item : items)
             {
-                item.moveLeft(deltaX / 4);
+                item.moveLeft(deltaX);
             }
 
         }   
@@ -670,7 +670,7 @@ public class Hero extends Actor
             //move all the Item objects to make it look like hero is moving
             for (Item item : items)
             {
-                item.moveRight(deltaX / 4);
+                item.moveRight(deltaX);
             }
 
         } 
