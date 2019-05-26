@@ -15,7 +15,7 @@ public class FireBall extends Actor
     private boolean isRemoved = false;
     public void act() 
     {
-        move(5);
+        move(9);
         if (isRemoved == false)
         {
            checkForRemoval();

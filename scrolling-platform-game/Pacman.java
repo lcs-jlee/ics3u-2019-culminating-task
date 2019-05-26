@@ -17,7 +17,7 @@ public class Pacman extends Actor
     private int startingX = 32 *3;
     private boolean ifAllowedToMove = false;
     private int moveAmount = 0;
-    private int life = 50;
+    private int life = 15;
     
     public void act() 
     {

@@ -129,7 +129,7 @@ public class Hero extends Actor
         //show life of hero
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
         world.showText(life +"", 20,20);        
-        
+        damageByPacman();
         touchPlatformLeft();
         checkFall();
         if (ifCrouch == false)
@@ -888,8 +888,14 @@ public class Hero extends Actor
     }
     public void decreaseLivesFireBall()
     {
-        life-=5;
+        life-=3;
     }
-    
+    private void damageByPacman()
+    {
+        if(isTouching(Pacman.class))
+        {
+            life -= 5;
+        }
+    }
 }
 
