@@ -116,6 +116,12 @@
             int y = 196;
             addObject(new Enemy(), x, y);
         }
+        for (int i = 0; i<= 5; i++)
+        {   
+            int x = TILE_SIZE * 10 + 32 * 12 * i;
+            int y = -TILE_SIZE - HALF_TILE_SIZE;
+            addObject(new Enemy(), x, y);
+        }
     
     }
     /**
@@ -188,11 +194,11 @@
             Ground ground = new Ground(x,y);
             addObject(ground, x, y);
         }
-        for (int j = 1; j <= howMany/5; j++)
+        for (int j = 1; j <= howMany/14; j++)
         {
             for (int i = 1; i <= 3; i++)
             {
-                int x = TILE_SIZE * 6 * j;
+                int x = 7 * TILE_SIZE + TILE_SIZE * 12 * j;
                 int y = -HALF_TILE_SIZE -TILE_SIZE * i;
                 addObject(new MetalPlate(x,y),x,y);
             }

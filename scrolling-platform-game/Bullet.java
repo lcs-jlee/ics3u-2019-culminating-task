@@ -65,7 +65,12 @@ public class Bullet extends Actor
             this.isRemoved = true;
             world.removeObject(this);
         }
-        
+        else if (isTouching(Platform.class))
+        {
+            SideScrollingWorld world = (SideScrollingWorld) getWorld();
+            this.isRemoved = true;
+            world.removeObject(this);
+        }
     }
     
     

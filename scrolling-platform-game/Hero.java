@@ -380,9 +380,9 @@ public class Hero extends Actor
     }
     public void touchPlatformRight()
     {
-        Actor Right = getOneObjectAtOffset(getImage().getWidth()/2, 0, Platform.class);
+        Actor right = getOneObjectAtOffset(getImage().getWidth()/2, 0, Platform.class);
         
-        if (Right == null )
+        if (right == null )
         {
               touchingRight = false;// Not on a solid object
         }
