@@ -188,6 +188,15 @@
             Ground ground = new Ground(x,y);
             addObject(ground, x, y);
         }
+        for (int j = 1; j <= howMany/5; j++)
+        {
+            for (int i = 1; i <= 3; i++)
+            {
+                int x = TILE_SIZE * 6 * j;
+                int y = -HALF_TILE_SIZE -TILE_SIZE * i;
+                addObject(new MetalPlate(x,y),x,y);
+            }
+        }
     }
     /**
      * Add steps made out of metal plates leading to end of world.

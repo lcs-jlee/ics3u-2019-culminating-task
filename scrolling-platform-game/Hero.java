@@ -18,6 +18,8 @@ public class Hero extends Actor
     //referece from the world
     SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
     
+    private boolean touchingLeft = false;
+    private boolean touchingRight = false;
     // Horizontal speed (change in horizontal position, or delta X)
     private int deltaX = 4;
 
@@ -128,6 +130,7 @@ public class Hero extends Actor
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
         world.showText(life +"", 20,20);        
         
+        touchPlatformLeft();
         checkFall();
         if (ifCrouch == false)
         {
@@ -137,7 +140,7 @@ public class Hero extends Actor
         checkCrouch();
         checkIfShoot();
         checkMoveUp();
-        if (checkTouchingPortal == true && frames % 20 == 0 && moveUpTimes <=5)
+        if (checkTouchingPortal == true && frames % 10 == 0 && moveUpTimes <=5)
         {
                 moveUp();   
                 if (moveUpTimes == 5)
@@ -216,13 +219,13 @@ public class Hero extends Actor
         //shoot
         
         // Walking keys
-        if (Greenfoot.isKeyDown("left") && !isGameOver)
+        if (Greenfoot.isKeyDown("left") && !isGameOver && touchingLeft == false)
         {
             
             moveLeft();
             
         }
-        else if (Greenfoot.isKeyDown("right") && !isGameOver)
+        else if (Greenfoot.isKeyDown("right") && !isGameOver && touchingRight == false)
         {
             
             moveRight();
@@ -361,6 +364,35 @@ public class Hero extends Actor
         }
         
     }
+    public void touchPlatformLeft()
+    {
+        Actor left = getOneObjectAtOffset(getImage().getWidth()/2 - 32, 0, Platform.class);
+        
+        if (left == null )
+        {
+              touchingLeft = false;// Not on a solid object
+        }
+        
+        else 
+        {
+            touchingLeft = true;
+        }
+    }
+    public void touchPlatformRight()
+    {
+        Actor Right = getOneObjectAtOffset(getImage().getWidth()/2, 0, Platform.class);
+        
+        if (Right == null )
+        {
+              touchingRight = false;// Not on a solid object
+        }
+        
+        else 
+        {
+            touchingRight = true;
+        }
+    }
+    
 
     /**
      * Make the hero jump.
