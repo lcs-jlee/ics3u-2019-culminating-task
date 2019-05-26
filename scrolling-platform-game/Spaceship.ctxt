@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Spaceship
+comment0.text=\n\ Write\ a\ description\ of\ class\ Cuphead\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ movement()
+comment3.params=
+comment3.target=void\ fire()
+comment4.params=speed
+comment4.target=void\ moveRight(int)
+comment5.params=speed
+comment5.target=void\ moveLeft(int)
+comment6.params=speed
+comment6.target=void\ moveUp(int)
+comment7.params=speed
+comment7.target=void\ moveDown(int)
+comment8.params=
+comment8.target=void\ decreaseLives()
+comment8.text=\n\ Decrease\ lives\n
+comment9.params=
+comment9.target=void\ checkRemoval()
+numComments=10

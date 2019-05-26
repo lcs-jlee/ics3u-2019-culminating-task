@@ -116,11 +116,12 @@
             int y = 196;
             addObject(new Enemy(), x, y);
         }
+        //upper world
         for (int i = 0; i<= 5; i++)
         {   
-            int x = TILE_SIZE * 10 + 32 * 12 * i;
-            int y = -TILE_SIZE - HALF_TILE_SIZE;
-            addObject(new Enemy(), x, y);
+            int x = TILE_SIZE * 12 + 32 * 12 * i;
+            int y = -TILE_SIZE - TILE_SIZE;
+            addObject(new Spaceship(), x, y);
         }
     
     }

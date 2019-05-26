@@ -570,7 +570,13 @@ public class Hero extends Actor
 
             // Track position in wider scrolling world
             currentScrollableWorldXPosition += deltaX;
+            //List spaceships
+            List<Spaceship> spaceships = world.getObjects(Spaceship.class);
             
+            for (Spaceship spaceship : spaceships)
+            {
+                spaceship.moveLeft(deltaX);
+            }
             //Get a list of all enemies
             List<Enemy> enemies = world.getObjects(Enemy.class);
             for (Enemy enemy : enemies)
@@ -688,6 +694,13 @@ public class Hero extends Actor
 
             // Track position in wider scrolling world
             currentScrollableWorldXPosition -= deltaX;
+            //List spaceships
+            List<Spaceship> spaceships = world.getObjects(Spaceship.class);
+            
+            for (Spaceship spaceship : spaceships)
+            {
+                spaceship.moveRight(deltaX);
+            }
             
             //List enemies
             List<Enemy> enemies = world.getObjects(Enemy.class);
@@ -755,7 +768,13 @@ public class Hero extends Actor
         
         // Track position in wider scrolling world
         currentScrollableWorldYPosition -= changeY/4;
+        //List spaceships
+        List<Spaceship> spaceships = world.getObjects(Spaceship.class);
         
+        for (Spaceship spaceship : spaceships)
+        {
+            spaceship.moveDown(changeY/4);
+        }
         //List enemies
         List<Enemy> enemies = world.getObjects(Enemy.class);
         

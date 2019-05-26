@@ -32,14 +32,24 @@ public class Bullet extends Actor
         {
             move(-10);
         }
+        //check If Bullet should be removed
         if (isRemoved == false)
         {
             checkIfAtEdge();
         }
         if (isRemoved == false)
         {
-            checkForRemoval();
+            checkForEnemy();
         }
+        if (isRemoved == false)
+        {
+            checkForSpaceship();
+        }
+        if (isRemoved == false)
+        {
+            checkIfAtPlatform();
+        }
+        
     } 
      private void checkIfAtEdge()
      {
@@ -53,7 +63,7 @@ public class Bullet extends Actor
         }
     
     }
-    public void checkForRemoval()
+    public void checkForEnemy()
     {
         if (isTouching(Enemy.class))
         {
@@ -65,7 +75,24 @@ public class Bullet extends Actor
             this.isRemoved = true;
             world.removeObject(this);
         }
-        else if (isTouching(Platform.class))
+        
+        
+    }
+    private void checkForSpaceship()
+    {
+        if (isTouching(Spaceship.class))
+        {
+            Spaceship theSpaceship = (Spaceship) getOneIntersectingObject(Spaceship.class);
+            theSpaceship.decreaseLives();
+            
+            SideScrollingWorld world = (SideScrollingWorld) getWorld();
+            this.isRemoved = true;
+            world.removeObject(this);
+        }
+    }
+    private void checkIfAtPlatform()
+    {
+         if (isTouching(Platform.class))
         {
             SideScrollingWorld world = (SideScrollingWorld) getWorld();
             this.isRemoved = true;
