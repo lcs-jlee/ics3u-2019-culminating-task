@@ -252,9 +252,16 @@
      */
     public void act()
     {
+        //playing sound
         if (frames % 9360 == 0 || frames == 0)
         {
             Greenfoot.playSound("a.mp3");
+        }
+        //show GO!
+        if (frames == 0)
+        {
+            addObject(new Go(),VISIBLE_WIDTH/2,VISIBLE_HEIGHT/2); 
+            //System.out.println("w");
         }
         addItems();
         checkWin();
@@ -332,7 +339,8 @@
     {
         if(isPacmanDead == true)
         {
-            showText("You Won", VISIBLE_WIDTH/2, VISIBLE_HEIGHT/2);
+            addObject(new Game(),VISIBLE_WIDTH/2, VISIBLE_HEIGHT/2); 
+            
             Greenfoot.stop();
         }
     }
