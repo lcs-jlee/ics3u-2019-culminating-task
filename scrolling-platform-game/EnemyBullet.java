@@ -55,6 +55,11 @@ public class EnemyBullet extends Actor
             this.isRemoved = true;
             world.removeObject(this);
         }
+        else if (isTouching(Platform.class))
+        {
+            this.isRemoved = true;
+            getWorld().removeObject(this);
+        }
         
     }
     
