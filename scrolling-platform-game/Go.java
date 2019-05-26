@@ -13,6 +13,10 @@ public class Go extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private int frames = 0;
+    Go()
+    {
+        Greenfoot.playSound("go.wav");
+    }
     public void act() 
     {
        if (frames / 60 == 1)

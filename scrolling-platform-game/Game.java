@@ -12,6 +12,10 @@ public class Game extends Actor
      * Act - do whatever the Game wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    Game()
+    {
+        Greenfoot.playSound("game.wav");
+    }
     public void act() 
     {
         // Add your action code here.

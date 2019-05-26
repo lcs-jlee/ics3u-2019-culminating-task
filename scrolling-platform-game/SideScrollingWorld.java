@@ -262,7 +262,7 @@
         {
             addObject(new Go(),VISIBLE_WIDTH/2,VISIBLE_HEIGHT/2); 
             //System.out.println("w");
-        }
+        } 
         addItems();
         checkWin();
         frames++;
