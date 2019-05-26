@@ -29,7 +29,8 @@ public class Spaceship extends Actor
     }
     private void fire()
     {
-        if (frames % 10 == 0)
+        SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
+        if (frames % 4 == 0 && world.VISIBLE_HEIGHT/2 +30 < getY())
         {
             
             SpaceshipBullet newSpaceshipBullet = new SpaceshipBullet(this.getRotation());
@@ -37,6 +38,8 @@ public class Spaceship extends Actor
             double y = Math.sin(getRotation()*Math.PI/180) * 22;
             
             getWorld().addObject(newSpaceshipBullet, getX()+(int)Math.round(x), getY()+(int)Math.round(y));
+            
+            
             
         }
     }

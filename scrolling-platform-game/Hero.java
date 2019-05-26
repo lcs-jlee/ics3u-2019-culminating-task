@@ -240,7 +240,7 @@ public class Hero extends Actor
         }
         
         // Jumping
-        if (Greenfoot.isKeyDown("up") && !isGameOver)
+        if (Greenfoot.isKeyDown("up") && !isGameOver && checkTouchingPortal == false)
         {
             // Only able to jump when on a solid object
             if (onPlatform())
@@ -555,11 +555,13 @@ public class Hero extends Actor
             }
             else
             {
+                /*
                 isGameOver = true;
                 world.setGameOver();
 
                 // Tell the user game is over
                 world.showText("LEVEL COMPLETE", world.getWidth() / 2, world.getHeight() / 2);
+                */
             }
 
         }
@@ -570,6 +572,14 @@ public class Hero extends Actor
 
             // Track position in wider scrolling world
             currentScrollableWorldXPosition += deltaX;
+            //List Pacman
+            //List spaceships
+            List<Pacman> pacmans = world.getObjects(Pacman.class);
+            
+            for (Pacman pacman : pacmans)
+            {
+                pacman.moveLeft(deltaX);
+            }
             //List spaceships
             List<Spaceship> spaceships = world.getObjects(Spaceship.class);
             
@@ -695,6 +705,13 @@ public class Hero extends Actor
             // Track position in wider scrolling world
             currentScrollableWorldXPosition -= deltaX;
             //List spaceships
+            List<Pacman> pacmans = world.getObjects(Pacman.class);
+            
+            for (Pacman pacman : pacmans)
+            {
+                pacman.moveRight(deltaX);
+            }
+            //List spaceships
             List<Spaceship> spaceships = world.getObjects(Spaceship.class);
             
             for (Spaceship spaceship : spaceships)
@@ -768,6 +785,13 @@ public class Hero extends Actor
         
         // Track position in wider scrolling world
         currentScrollableWorldYPosition -= changeY/4;
+        //List spaceships
+        List<Pacman> pacmans = world.getObjects(Pacman.class);
+        
+        for (Pacman pacman : pacmans)
+        {
+            pacman.moveDown(changeY/4);
+        }
         //List spaceships
         List<Spaceship> spaceships = world.getObjects(Spaceship.class);
         

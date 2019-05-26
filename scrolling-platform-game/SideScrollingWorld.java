@@ -123,7 +123,8 @@
             int y = -TILE_SIZE - TILE_SIZE;
             addObject(new Spaceship(), x, y);
         }
-    
+        //add boss(pacman)
+        addObject(new Pacman(), TILE_SIZE *3, - 2 *TILE_SIZE - HALF_TILE_SIZE);
     }
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
