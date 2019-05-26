@@ -288,7 +288,7 @@
         final int COUNT_OF_GROUND_BELOW = GROUND_BELOW_COLUMNS * GROUND_BELOW_ROWS;
         
         // Make portal
-        int X = SCROLLABLE_WIDTH - TILE_SIZE * 3;
+        int X = SCROLLABLE_WIDTH - TILE_SIZE * 2;
         int Y = TILE_SIZE + TILE_SIZE ;
         Portal portal = new Portal(X, Y);
         addObject(portal, X, Y);
