@@ -23,6 +23,7 @@ public class Pacman extends Actor
     {
         // Add your action code here.
         checkMovement();
+        fire();
         if (frames % 5 == 0 && ifAllowedToMove == true)
         {
             movement();
@@ -38,17 +39,28 @@ public class Pacman extends Actor
         checkForRemoval();
         frames++;
     }
+    private void fire()
+    {
+        if (frames % 300 == 0 || frames == 0)
+        {
+            for(int i = 0; i <=6; i++)
+            {
+                FireBall fireBall = new FireBall();
+                getWorld().addObject(fireBall, getX()+30, getY());     
+            }
+        }
+    }
     private void movement()
     {
-        move(25);
-        moveAmount +=25;
+        move(50);
+        moveAmount +=50;
     }
     private void movementBack()
     {
         if (moveAmount >= 0)
         {
-            move(-10);
-            moveAmount -=10;
+            move(-30);
+            moveAmount -=30;
         }
         
     }

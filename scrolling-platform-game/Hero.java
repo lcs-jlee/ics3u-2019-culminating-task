@@ -886,7 +886,10 @@ public class Hero extends Actor
     {
         life--;
     }
-    
+    public void decreaseLivesFireBall()
+    {
+        life-=5;
+    }
     
 }
 
