@@ -47,6 +47,10 @@ public class Bullet extends Actor
         }
         if (isRemoved == false)
         {
+            checkForPacman();
+        }
+        if (isRemoved == false)
+        {
             checkIfAtPlatform();
         }
         
@@ -84,6 +88,18 @@ public class Bullet extends Actor
         {
             Spaceship theSpaceship = (Spaceship) getOneIntersectingObject(Spaceship.class);
             theSpaceship.decreaseLives();
+            
+            SideScrollingWorld world = (SideScrollingWorld) getWorld();
+            this.isRemoved = true;
+            world.removeObject(this);
+        }
+    }
+    private void checkForPacman()
+    {
+        if (isTouching(Pacman.class))
+        {
+            Pacman thePacman = (Pacman) getOneIntersectingObject(Pacman.class);
+            thePacman.decreaseLives();
             
             SideScrollingWorld world = (SideScrollingWorld) getWorld();
             this.isRemoved = true;

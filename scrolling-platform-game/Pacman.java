@@ -17,6 +17,8 @@ public class Pacman extends Actor
     private int startingX = 32 *3;
     private boolean ifAllowedToMove = false;
     private int moveAmount = 0;
+    private int life = 50;
+    
     public void act() 
     {
         // Add your action code here.
@@ -33,7 +35,7 @@ public class Pacman extends Actor
         {
             movementBack();
         }
-        
+        checkForRemoval();
         frames++;
     }
     private void movement()
@@ -60,11 +62,7 @@ public class Pacman extends Actor
             
             
         }
-        
-        
-        
-        
-        
+     
     }
     public void moveRight(int speed)
     {
@@ -84,5 +82,19 @@ public class Pacman extends Actor
     public void moveDown(int speed)
     {
         setLocation(getX(), getY()+speed);
+    }
+    public void decreaseLives()
+    {
+        life--;
+    }
+    public void checkForRemoval()
+    {
+        if (life <= 0)
+        {
+            SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
+            
+            world.isPacmanDead = true;
+            getWorld().removeObject(this);
+        }
     }
 }

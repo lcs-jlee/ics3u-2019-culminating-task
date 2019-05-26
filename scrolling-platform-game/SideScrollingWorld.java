@@ -30,6 +30,8 @@
         // Track whether game is on
         private boolean isGameOver;
         private int frames;
+        
+        public boolean isPacmanDead = false;
         /**
          * Constructor for objects of class SideScrollingWorld.
          */
@@ -255,7 +257,7 @@
             Greenfoot.playSound("a.mp3");
         }
         addItems();
-        
+        checkWin();
         frames++;
     }
 
@@ -325,6 +327,14 @@
     public Hero getHero()
     {
         return theHero;
+    }
+    private void checkWin()
+    {
+        if(isPacmanDead == true)
+        {
+            showText("You Won", VISIBLE_WIDTH/2, VISIBLE_HEIGHT/2);
+            Greenfoot.stop();
+        }
     }
 
     /**
