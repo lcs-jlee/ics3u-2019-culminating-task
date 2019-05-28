@@ -75,7 +75,7 @@ public class Hero extends Actor
     private int frames;
     
     //Megaman's life
-    private int life = 250;
+    private int life = 150;
 
     /**
      * Constructor
@@ -128,9 +128,10 @@ public class Hero extends Actor
     {
         //show life of hero
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
-        world.showText(life +"", 20,20);        
+        world.showText("Life: "+life +"", 100,20);        
         damageByPacman();
         touchPlatformLeft();
+        touchPlatformRight();
         checkFall();
         if (ifCrouch == false)
         {
