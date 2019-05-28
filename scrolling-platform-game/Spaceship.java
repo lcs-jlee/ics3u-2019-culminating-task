@@ -74,8 +74,10 @@ public class Spaceship extends Actor
     private void checkRemoval()
     {
 
-        if (life <= 0)
+        if (life < 1)
         {
+            SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
+            world.addScoreSpaceShip();
             getWorld().removeObject(this);
         }
 

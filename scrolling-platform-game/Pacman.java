@@ -21,14 +21,15 @@ public class Pacman extends Actor
     
     public void act() 
     {
-        // Add your action code here.
+        // check for movement
         checkMovement();
+        //shoot fireball
         fire();
         if (frames % 5 == 0 && ifAllowedToMove == true)
         {
             movement();
         }
-        if (moveAmount >=  500)
+        if (moveAmount >=  450)
         {
             ifAllowedToMove = false;
         }
@@ -37,8 +38,12 @@ public class Pacman extends Actor
             movementBack();
         }
         checkForRemoval();
+        //update frames
         frames++;
     }
+    /**
+     * check if it can shoot fireball
+     */
     private void fire()
     {
         if (frames % 300 == 0 || frames == 0)
@@ -50,11 +55,13 @@ public class Pacman extends Actor
             }
         }
     }
+    //move
     private void movement()
     {
         move(50);
         moveAmount +=50;
     }
+    //move back
     private void movementBack()
     {
         if (moveAmount >= 0)
@@ -66,7 +73,7 @@ public class Pacman extends Actor
     }
     private void checkMovement()
     {
-        
+        //makes pacman allowed to move after 10 seconds
         if (frames % 600 == 0)
         {
             
@@ -95,10 +102,12 @@ public class Pacman extends Actor
     {
         setLocation(getX(), getY()+speed);
     }
+    //decrease life
     public void decreaseLives()
     {
         life--;
     }
+    //check if it should be removed
     public void checkForRemoval()
     {
         if (life <= 0)

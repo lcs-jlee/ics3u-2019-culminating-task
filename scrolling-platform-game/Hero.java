@@ -128,28 +128,60 @@ public class Hero extends Actor
     {
         //show life of hero
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
-        world.showText("Life: "+life +"", 100,20);        
+        //Show life
+        int offScreenVerticalPosition = (world.getHeight() + this.getImage().getHeight() / 2);
+        if (life > 0 && this.getY() < offScreenVerticalPosition)
+        {
+            world.showText("Life: "+life +"", 100,20); 
+        }
+        //check if meagaman should get damage from pacman     
         damageByPacman();
+        //check if magaman has obstacle on his left
         touchPlatformLeft();
+        //check if megaman has obstacle on his right
         touchPlatformRight();
+        //check if megaman should fall
         checkFall();
+        //make megaman not be able to move when he's crouching
         if (ifCrouch == false)
         {
             checkKeys();
         }
+        //check if megaman is touching heart
         checkHeart();
+        //check if player wants megaman to crouch
         checkCrouch();
+        //check if player wants megaman to shoot
         checkIfShoot();
+        //check if megaman is going to move up to "upper world"
         checkMoveUp();
+        //chekc if megaman is touching portal
+        checkPortal();
+        //check if game is over
+        if (!isGameOver)
+        {
+            checkGameOver();
+        }
+        //add frames
+        frames++;
+    }
+    /**
+     * Check if he is touching portal
+     */
+    private void checkPortal()
+    {
+        //add animation
         if (checkTouchingPortal == true && frames % 10 == 0 && moveUpTimes <=5)
         {
-                moveUp();   
+                moveUp(); 
+                //stop objects to move down (stop moveUp())
                 if (moveUpTimes == 5)
                 {
                     checkTouchingPortal = false;
                     
                 }
         }
+        //change the image of megaman when it's moving up
         if (checkTouchingPortal == true)
         {
             if (frames % 2 == 0)
@@ -161,11 +193,6 @@ public class Hero extends Actor
                 setImage("Item.png");
             }
         }
-        if (!isGameOver)
-        {
-            checkGameOver();
-        }
-        frames++;
     }
     /**
      * Check if he got Heart
@@ -293,6 +320,9 @@ public class Hero extends Actor
         
         
     }
+    /**
+     * check if megaman needs to fall
+     */
     public void checkFall()
     {
         if (onPlatform() || checkTouchingPortal == true)
@@ -365,6 +395,9 @@ public class Hero extends Actor
         }
         
     }
+    /**
+     * 
+     */
     public void touchPlatformLeft()
     {
         Actor left = getOneObjectAtOffset(getImage().getWidth()/2 - 32, 0, Platform.class);
@@ -379,6 +412,9 @@ public class Hero extends Actor
             touchingLeft = true;
         }
     }
+    /**
+     * check if megaman is facing the obstacle in the right
+     */
     public void touchPlatformRight()
     {
         Actor right = getOneObjectAtOffset(getImage().getWidth()/2, 0, Platform.class);
@@ -770,6 +806,9 @@ public class Hero extends Actor
         } 
         //horizontalDirection = FACING_LEFT;
     }
+    /**
+     * check if megaman should move up
+     */
     private void checkMoveUp()
     {
         if (getY() == 49 && isTouching(Portal.class))
@@ -779,6 +818,9 @@ public class Hero extends Actor
         }
         
     }
+    /**
+     * Make other objects to go down, so it looks like megaman going up
+     */
     private void moveUp()
     {
         SideScrollingWorld world = (SideScrollingWorld) getWorld();
@@ -867,8 +909,10 @@ public class Hero extends Actor
     
             // Tell the user game is over
             world.addObject(new Fail(), world.getWidth() / 2, world.getHeight() / 2);
+            world.showText("Life: "+ 0 +"", 100,20);
             Greenfoot.stop();
         }
+        //life is 0?
         if (life <= 0)
         {
             isGameOver = true;
@@ -878,6 +922,7 @@ public class Hero extends Actor
     
             // Tell the user game is over
             world.addObject(new Fail(), world.getWidth() / 2, world.getHeight() / 2);
+            world.showText("Life: "+ 0 +"", 100,20); 
             Greenfoot.stop();
         }
     }
@@ -889,10 +934,16 @@ public class Hero extends Actor
     {
         life--;
     }
+    /**
+     * decrease life by FireBall
+     */
     public void decreaseLivesFireBall()
     {
         life-=3;
     }
+    /**
+     * check if it's touching pacman and decrease the life
+     */
     private void damageByPacman()
     {
         if(isTouching(Pacman.class))

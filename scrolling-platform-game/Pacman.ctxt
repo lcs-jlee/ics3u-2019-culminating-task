@@ -9,6 +9,7 @@ comment11.params=
 comment11.target=void\ checkForRemoval()
 comment2.params=
 comment2.target=void\ fire()
+comment2.text=\n\ check\ if\ it\ can\ shoot\ fireball\n
 comment3.params=
 comment3.target=void\ movement()
 comment4.params=

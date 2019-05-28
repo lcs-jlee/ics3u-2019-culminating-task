@@ -30,6 +30,8 @@
         // Track whether game is on
         private boolean isGameOver;
         private int frames;
+        private int score = 0;
+        private int spaceShipScore =0;
         
         public boolean isPacmanDead = false;
         /**
@@ -56,48 +58,53 @@
          */
         private void setup()
         {
-            
+            //add ground on the far left side
             addLeftGround();
+            //add fences
             addFences();
-            
+            //add stardestroyers (decoration)
             addStardestroyers();
+            //add ground on far right side
             addRightGround();
+            //add "metal plates" 
             for (int i = 0; i <=3; i ++)
             {
                 addSteps(i);
             }
-            
+            //add platform for "upper world"
             addUpGround(SCROLLABLE_WIDTH/TILE_SIZE*2);
+            //add hero
             addHero();
+            //add enemy
             addEnemy();
             
         }
         private void addItems()
         {
-            
-        if (frames % 1800 == 0 || frames == 0)
-        {
-            int selection = Greenfoot.getRandomNumber(2);
-            
-            if (selection == 0)
+            //add item(heart) randomly
+            if (frames % 1800 == 0 || frames == 0)
             {
-                int x = 400 + 16 * (selection + 2) *16;
+                int selection = Greenfoot.getRandomNumber(2);
                 
-                addObject(new Heart(), x, 200);
+                if (selection == 0)
+                {
+                    int x = 400 + 16 * (selection + 2) *16;
+                    
+                    addObject(new Heart(), x, 200);
+                }
+                else if (selection == 1)
+                {
+                    int x = 400 + 16 * (selection + 2) *16;
+                    
+                    addObject(new Heart(), x, 200);
+                }
+                else
+                {
+                    int x = 400 + 16 * (selection +2) *16;
+                    
+                    addObject(new Heart(), x, 200);
+                }
             }
-            else if (selection == 1)
-            {
-                int x = 400 + 16 * (selection + 2) *16;
-                
-                addObject(new Heart(), x, 200);
-            }
-            else
-            {
-                int x = 400 + 16 * (selection +2) *16;
-                
-                addObject(new Heart(), x, 200);
-            }
-        }
         
     }
     /**
@@ -340,7 +347,8 @@
         if(isPacmanDead == true)
         {
             addObject(new Game(),VISIBLE_WIDTH/2, VISIBLE_HEIGHT/2); 
-            
+            showText("You killed " + score +" UFOs", 300, 20);
+            showText("You destroyed " + spaceShipScore +" spaceships", 300, 50);
             Greenfoot.stop();
         }
     }
@@ -351,6 +359,14 @@
     public void setGameOver()
     {
         isGameOver = true;
+    }
+    public void addScore()
+    {
+        score ++;
+    }
+    public void addScoreSpaceShip()
+    {
+        spaceShipScore ++;
     }
 }
 

@@ -71,8 +71,10 @@ public class Enemy extends Actor
     private void checkRemoval()
     {
 
-        if (life <= 0)
+        if (life < 1)
         {
+            SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
+            world.addScore();
             getWorld().removeObject(this);
         }
 
