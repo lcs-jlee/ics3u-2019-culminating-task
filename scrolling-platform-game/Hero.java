@@ -254,7 +254,7 @@ public class Hero extends Actor
            }
            if (!Greenfoot.isKeyDown("down"))
            {
-            ifCrouch = false;
+               ifCrouch = false;
            }
         
         
@@ -582,7 +582,6 @@ public class Hero extends Actor
 
         // Get object reference to world
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
-
         // Decide whether to actually move, or make world's tiles move
         if (currentScrollableWorldXPosition < world.HALF_VISIBLE_WIDTH)
         {
@@ -611,17 +610,6 @@ public class Hero extends Actor
                 // Track position in wider scrolling world
                 currentScrollableWorldXPosition += deltaX;
             }
-            else
-            {
-                /*
-                isGameOver = true;
-                world.setGameOver();
-
-                // Tell the user game is over
-                world.showText("LEVEL COMPLETE", world.getWidth() / 2, world.getHeight() / 2);
-                */
-            }
-
         }
         else
         {
@@ -916,7 +904,7 @@ public class Hero extends Actor
     {
         // Get object reference to world
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
-    
+        
         // Vertical position where hero no longer visible
         int offScreenVerticalPosition = (world.getHeight() + this.getImage().getHeight() / 2);
     
@@ -927,7 +915,9 @@ public class Hero extends Actor
             isGameOver = true;
             world.setGameOver();
             world.removeObject(this);
-    
+            world.sound().stop();
+            
+            world.sound1().play();
             // Tell the user game is over
             world.addObject(new Fail(), world.getWidth() / 2, world.getHeight() / 2);
             world.showText("Life: "+ 0 +"", 100,20);
@@ -940,7 +930,9 @@ public class Hero extends Actor
             //remove the hero
             world.setGameOver();
             world.removeObject(this);
-    
+            //change sound
+            world.sound().stop();
+            world.sound1().play();
             // Tell the user game is over
             world.addObject(new Fail(), world.getWidth() / 2, world.getHeight() / 2);
             world.showText("Life: "+ 0 +"", 100,20); 
