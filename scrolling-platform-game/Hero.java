@@ -155,6 +155,8 @@ public class Hero extends Actor
         checkIfShoot();
         //check if megaman is going to move up to "upper world"
         checkMoveUp();
+        //check if megaman is on protal
+        checkIfOnPortal();
         //chekc if megaman is touching portal
         checkPortal();
         //check if game is over
@@ -164,6 +166,24 @@ public class Hero extends Actor
         }
         //add frames
         frames++;
+    }
+    /**
+     * Check if he is on portal
+     */
+    private void checkIfOnPortal()
+    {
+        Actor directlyUnder = getOneObjectAtOffset(0, getImage().getHeight() / 2, Portal.class);
+        Actor frontUnder = getOneObjectAtOffset(getImage().getWidth() / 3, getImage().getHeight() / 2, Portal.class);
+        Actor rearUnder = getOneObjectAtOffset(0 - getImage().getWidth() / 3, getImage().getHeight() / 2, Portal.class);
+        if (directlyUnder == null && frontUnder == null && rearUnder == null)
+        {
+               // Not on a portal
+        }
+        
+        else 
+        {
+            checkTouchingPortal = true;
+        }
     }
     /**
      * Check if he is touching portal
@@ -384,6 +404,7 @@ public class Hero extends Actor
         Actor rearUnder = getOneObjectAtOffset(0 - getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
 
         // If there is no solid object below (or slightly in front of or behind) the hero...
+        
         if (directlyUnder == null && frontUnder == null && rearUnder == null)
         {
             return false;   // Not on a solid object

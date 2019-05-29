@@ -260,7 +260,7 @@
     public void act()
     {
         //playing sound
-        if (frames % 9360 == 0 || frames == 0)
+        if (frames % 14400 == 0 || frames == 0)
         {
             Greenfoot.playSound("a.mp3");
         }
@@ -302,7 +302,7 @@
         final int COUNT_OF_GROUND_BELOW = GROUND_BELOW_COLUMNS * GROUND_BELOW_ROWS;
         
         // Make portal
-        int X = SCROLLABLE_WIDTH - TILE_SIZE * 2;
+        int X = SCROLLABLE_WIDTH - TILE_SIZE ;
         int Y = TILE_SIZE + TILE_SIZE ;
         Portal portal = new Portal(X, Y);
         addObject(portal, X, Y);
@@ -347,7 +347,7 @@
         if(isPacmanDead == true)
         {
             addObject(new Game(),VISIBLE_WIDTH/2, VISIBLE_HEIGHT/2); 
-            showText("You killed " + score +" UFOs", 300, 20);
+            showText("You destroyed " + score +" UFOs", 300, 20);
             showText("You destroyed " + spaceShipScore +" spaceships", 300, 50);
             Greenfoot.stop();
         }
