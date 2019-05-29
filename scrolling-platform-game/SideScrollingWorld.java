@@ -77,7 +77,9 @@
             addHero();
             //add enemy
             addEnemy();
-            
+            //add PressStart
+            PressStart pressStart = new PressStart();
+            addObject(pressStart, VISIBLE_WIDTH/2, VISIBLE_HEIGHT/2);
         }
         private void addItems()
         {
@@ -259,20 +261,23 @@
      */
     public void act()
     {
-        //playing sound
-        if (frames % 14400 == 0 || frames == 0)
-        {
-            Greenfoot.playSound("a.mp3");
-        }
+       //playing sound
+       if (frames % 14400 == 0 || frames == 0)
+       {
+          Greenfoot.playSound("a.mp3");
+       } 
         //show GO!
-        if (frames == 0)
-        {
-            addObject(new Go(),VISIBLE_WIDTH/2,VISIBLE_HEIGHT/2); 
-            //System.out.println("w");
-        } 
-        addItems();
-        checkWin();
-        frames++;
+       if (frames == 0)
+       {
+           addObject(new Go(),VISIBLE_WIDTH/2,VISIBLE_HEIGHT/2); 
+           //System.out.println("w");
+       } 
+       //add items to the world
+       addItems();
+       //check if megaman won the game
+       checkWin();
+       //add frames
+       frames++;
     }
 
     /**
@@ -285,7 +290,6 @@
         int initialY = getHeight() / 4 * 3;
         // Instantiate the hero object
         theHero = new Hero(initialX, initialY);
-
         // Add hero in bottom left corner of screen
         addObject(theHero, initialX, getHeight() / 4 * 3);
     }
@@ -342,6 +346,9 @@
     {
         return theHero;
     }
+    /**
+     * check if pacman is dead -> if megaman won the game
+     */
     private void checkWin()
     {
         if(isPacmanDead == true)
@@ -349,10 +356,10 @@
             addObject(new Game(),VISIBLE_WIDTH/2, VISIBLE_HEIGHT/2); 
             showText("You destroyed " + score +" UFOs", 300, 20);
             showText("You destroyed " + spaceShipScore +" spaceships", 300, 50);
+            setGameOver();
             Greenfoot.stop();
         }
     }
-
     /**
      * Set game over
      */
@@ -360,10 +367,16 @@
     {
         isGameOver = true;
     }
+    /**
+     * add score
+     */
     public void addScore()
     {
         score ++;
     }
+    /**
+     * add score for spaceship
+     */
     public void addScoreSpaceShip()
     {
         spaceShipScore ++;
