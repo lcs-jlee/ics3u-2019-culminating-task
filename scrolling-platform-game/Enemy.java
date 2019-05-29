@@ -24,12 +24,14 @@ public class Enemy extends Actor
 
     public void act() 
     {
-
-        movement();
-        shoot();
-        checkHit();
-        checkRemoval();
-        frames++;
+       
+            movement();
+            shoot();
+            checkHit();
+            checkRemoval();
+            frames++;
+        
+        
     }
 
     private void shoot()
