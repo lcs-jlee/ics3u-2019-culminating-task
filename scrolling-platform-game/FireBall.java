@@ -21,7 +21,9 @@ public class FireBall extends Actor
            checkForRemoval();
         }
     }    
-    
+    /**
+     * remove when it touches platform and Hero
+     */
     public void checkForRemoval()
     {
         if (isTouching(Hero.class))

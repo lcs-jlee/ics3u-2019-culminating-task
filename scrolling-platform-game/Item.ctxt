@@ -6,6 +6,7 @@ comment1.target=void\ act()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ Heart\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment2.params=speed
 comment2.target=void\ moveRight(int)
+comment2.text=\n\ for\ hero\ class\n
 comment3.params=speed
 comment3.target=void\ moveLeft(int)
 comment4.params=speed

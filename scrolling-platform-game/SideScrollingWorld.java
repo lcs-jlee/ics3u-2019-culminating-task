@@ -84,6 +84,9 @@ public class SideScrollingWorld extends World
         PressStart pressStart = new PressStart();
         addObject(pressStart, VISIBLE_WIDTH/2, VISIBLE_HEIGHT/2);
     }
+    /**
+     * Add items
+     */
     private void addItems()
     {
         //add item(heart) randomly

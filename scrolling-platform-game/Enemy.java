@@ -1,4 +1,5 @@
 
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -25,15 +26,17 @@ public class Enemy extends Actor
     public void act() 
     {
        
-            movement();
-            shoot();
-            checkHit();
-            checkRemoval();
-            frames++;
+        movement();
+        shoot();
+        checkHit();
+        checkRemoval();
+        frames++;
         
         
     }
-
+    /**
+     * shoot EnemyBullet
+     */
     private void shoot()
     {
         if (frames % 60 == 0 || frames == 0)
@@ -47,7 +50,9 @@ public class Enemy extends Actor
 
     
     }
-
+    /**
+     * move left and right
+     */
     private void movement()
     {
         if (directRight == true )
@@ -69,7 +74,9 @@ public class Enemy extends Actor
         }
 
     }
-
+    /**
+     * see if it should be removed
+     */
     private void checkRemoval()
     {
 
@@ -81,7 +88,9 @@ public class Enemy extends Actor
         }
 
     }
-
+    /**
+     * check if it got hit
+     */
     private void checkHit()
     {
         if (isTouching(Bullet.class))
@@ -89,7 +98,9 @@ public class Enemy extends Actor
             life --;
         }
     }
-
+    /**
+     * for Hero class 
+     */
     public void moveRight(int speed)
     {
         setLocation(getX() + speed, getY());

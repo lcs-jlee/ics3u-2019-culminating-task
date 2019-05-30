@@ -5,4 +5,5 @@ comment1.params=
 comment1.target=void\ act()
 comment2.params=
 comment2.target=void\ checkForRemoval()
+comment2.text=\n\ remove\ when\ it\ touches\ platform\ and\ Hero\n
 numComments=3

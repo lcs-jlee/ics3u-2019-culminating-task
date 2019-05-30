@@ -18,6 +18,7 @@ comment5.params=
 comment5.target=void\ checkMovement()
 comment6.params=speed
 comment6.target=void\ moveRight(int)
+comment6.text=\n\ For\ hero\ class\n
 comment7.params=speed
 comment7.target=void\ moveLeft(int)
 comment8.params=speed

@@ -83,6 +83,9 @@ public class Pacman extends Actor
         }
      
     }
+    /**
+     * For hero class
+     */
     public void moveRight(int speed)
     {
         setLocation(getX() + speed, getY());

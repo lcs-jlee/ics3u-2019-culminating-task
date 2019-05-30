@@ -40,6 +40,7 @@ comment20.params=
 comment20.target=greenfoot.GreenfootSound\ sound2()
 comment3.params=
 comment3.target=void\ addItems()
+comment3.text=\n\ Add\ items\n
 comment4.params=
 comment4.target=void\ addEnemy()
 comment4.text=\n\ Add\ enemies\ to\ the\ world\n

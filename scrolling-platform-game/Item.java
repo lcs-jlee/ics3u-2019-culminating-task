@@ -16,6 +16,9 @@ public class Item extends Actor
     {
         
     }  
+    /**
+     * for hero class
+     */
     public void moveRight(int speed)
     {
         setLocation(getX() + speed, getY());

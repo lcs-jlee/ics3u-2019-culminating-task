@@ -27,6 +27,9 @@ public class Spaceship extends Actor
         move(5);
         fire();
     }
+    /**
+     * shoot enemy bullet
+     */
     private void fire()
     {
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 

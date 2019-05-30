@@ -34,6 +34,9 @@ public class EnemyBullet extends Actor
             checkForRemoval();
         }
     } 
+    /**
+     * it should be removed when it touches the edge
+     */
     private void checkIfAtEdge()
      {
         if (isAtEdge())
@@ -46,6 +49,9 @@ public class EnemyBullet extends Actor
         }
     
     }
+    /**
+     *  removes when it touches Hero and Platform
+     */
     public void checkForRemoval()
     {
         if (isTouching(Hero.class))

@@ -7,6 +7,7 @@ comment2.params=
 comment2.target=void\ movement()
 comment3.params=
 comment3.target=void\ fire()
+comment3.text=\n\ shoot\ enemy\ bullet\n
 comment4.params=speed
 comment4.target=void\ moveRight(int)
 comment5.params=speed
